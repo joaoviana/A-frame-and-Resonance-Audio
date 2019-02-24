@@ -29,7 +29,7 @@
     <!-- JavaScript Files Import -->
     
     <!-- Room Model Config with Resonance Audio -->
-
+        <script src="./src/scripts/utils.js" type="text/javascript"></script>
         <script src="./src/scripts/room-models.js" type="text/javascript"></script>
         <script src="./src/scripts/components.js" type="text/javascript"></script>  
         <script src="./src/scripts/spatialisation.js" type="text/javascript"></script>
@@ -42,13 +42,18 @@
         <!-- Asset Management START -->
         <a-assets>
             <!-- Images pre-loading -->
-            <img id="marble" src="./src/assets/marble.jpg" crossorigin="anonymous">
             <img id="foam" src="./src/assets/foam.jpg" crossorigin="anonymous">
-            <img id="glass" src="./src/assets/glass.jpeg" crossorigin="anonymous">
-            <img id="curtains" src="./src/assets/curtains.jpg" crossorigin="anonymous">
             <img id="wood" src="./src/assets/wood.jpg" crossorigin="anonymous">
+            <!-- <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"> -->
+            
+            <img id="glass-thin" src="./src/assets/glass-thin.jpeg" crossorigin="anonymous">
             <img id="transparent" src="./src/assets/transparent.jpeg" crossorigin="anonymous">
-            <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg">
+            <img id="marble" src="./src/assets/marble.jpg" crossorigin="anonymous">
+            <img id="curtain-heavy" src="./src/assets/curtain-heavy.jpg" crossorigin="anonymous">
+            <img id="metal" src="./src/assets/metal.png" crossorigin="anonymous">
+            <img id="water-or-ice-surface" src="./src/assets/water-or-ice-surface.png" crossorigin="anonymous">
+            <img id="brick-bare" src="./src/assets/brick-bare.png" crossorigin="anonymous">
+            <img id="brick-painted" src="./src/assets/brick-painted.png" crossorigin="anonymous">
 
             <!-- Mixins pre-loading -->
             <a-mixin id="mycursor" position="0 0 -0.5" raycaster geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32" material="color: white; shader: flat" static-body="shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;colliderEventProperty: els;colliderEndEvent:raycaster-intersection-cleared; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
@@ -64,34 +69,10 @@
 
         <!-- A-Scene START -->
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false"></a-box>
-        <a-entity environment="preset:contact"></a-entity>
-        <!-- <a-entity position="0 -.001 0" shadow="receive:true" environment="preset: default; lightPosition: 0 1 -0.4;playArea:1.25; groundYScale: 50;groundTexture:none"></a-entity>  -->
-            <!-- <a-sphere id="sound-obj" x class="cube" mixin="cube" position="-0d 1.6 -3.25" radius=".75"material="color:#f44336">
-                <a-animation attribute="color"
-                dur="280"
-                from="#f44336"
-                to="green"
-                begin="click"
-                direction="alternate"
-                repeat="0"></a-animation>
-            </a-sphere> -->
+        <a-entity environment="preset:contact; playArea:1.25; groundYScale: 50;"></a-entity>
 
-        <!-- <a-sphere id="sphere2" y class="cube" mixin="cube" position="-0d 5 -3.25" radius=".75"material="color:#f44336" visible="false">
-            <a-animation attribute="color"
-            dur="280"
-            from="#f44336"
-            to="green"
-            begin="click"
-            direction="alternate"
-            repeat="0"></a-animation>
-        </a-sphere> --> 
-    
-        <!-- <a-text id="text1" class="text" material="shader:flat;" width="2.5" position="-.45 3 -3.25" rotation="20 0 "  value="Click to Play/Pause" text="">    
-        </a-text> 
-        <a-text id="text2" material="shader:flat" width="2.5" rotation="20 0 0" position="-.48 2.75 -3.25" value="Click & Hold to Move" text=""></a-text> -->
-     
         <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
-            <a-camera>
+            <a-camera wasd-controls="acceleration: 100">
                 <a-entity listener class="gazecaster"></a-entity>
             </a-camera>
             <a-entity  class="right-controller"></a-entity>
@@ -100,11 +81,9 @@
     
         <a-entity rotation="-90 0 0" position="0 16.3054254257165 0" light="type:spot;intensity:1;castShadow:true"></a-entity>
         <a-entity mixin="wall" position="0 5 -10"></a-entity>
-    
         <a-entity wireframe="true"  mixin="wall" rotation="0 180 0" position="0 5 10"></a-entity>
         <a-entity wireframe="true" mixin="wall" rotation="0 90 0" position="-10 5 0"></a-entity>
         <a-entity mixin="wall" rotation="0 -90 0" position="10 5 0"></a-entity>
-
         <a-entity mixin="ground" rotation="90 0 0" position="0 10 0"></a-entity>
        <!-- A-Scene END -->
 
@@ -112,10 +91,19 @@
         <!-- <a-box startbutton id="boxId" position="0 0.5 -3" rotation="0 45 0" color="blue"></a-box> -->
 
         <!-- Main Menu -->
-        <a-entity id="main-menu" template="src: mainMenu.template"></a-entity>
+        <a-entity id="main-menu" template="src: ./src/templates/mainMenu.template" visible="false"></a-entity>
+
+        <!-- Menu Selection -->
+        <a-entity id="selection-menu" template="src: ./src/templates/selectionMenu.template" visible="false"></a-entity>
+
+        <a-entity testing-menu id="default-menu" template="src: ./src/templates/defaultMenu.template" visible="true"></a-entity>
+
+        <!-- <a-entity id="customise-menu" template="src: ./src/templates/customiseMenu.template" visible="false"></a-entity> -->
+
+        <!-- <a-entity id="learn-menu" template="src: ./src/templates/learnMenu.template" visible="false"></a-entity> -->
 
         <!-- Wall Material Selection Menus START--> 
-        <a-entity id="room-props-menu" template="src: roomPropsMenu.template" visible="false"></a-entity>
+        <a-entity id="room-props-menu" template="src: ./src/templates/roomPropsMenu.template" visible="false"></a-entity>
          <!-- Wall Material Selection Menus START-->
     </a-scene>
     

@@ -56,20 +56,18 @@
 
 */
 
-/*
 
-let scene, audioContext, source, audioReady, source;
 
-function initAudio() {
+let audioContext;
+let scene;
+let x;
+let xSource;
+let source;
+let audioReady = false;
 
-  audioContext = new (window.AudioContext || window.webkitAudioContext);
 
-  // Create a (1st-order Ambisonic) ResonanceAudio scene.
-  scene = new ResonanceAudio(audioContext);
 
-  // Send scene's rendered binaural output to stereo out.
-  scene.output.connect(audioContext.destination);
-
+function initAudio(mode) {
   // Set room acoustics properties.
   let defaultDimensions = {
     width: 20,
@@ -77,26 +75,32 @@ function initAudio() {
     depth: 20,
   };
   
-  let defaultMaterial = {
-    left: 'wood-panel',
-    right: 'wood-panel',
-    front: 'wood-panel',
-    back: 'wood-panel',
-    down: 'wood-panel',
-    up: 'wood-panel',
-  };
+  let defaultMaterial =  setAllRoomProperties('transparent');
 
-  if(Object.keys(roomProperties).length < 6) {
+  if(mode == 'default') {
+    audioContext = new (window.AudioContext || window.webkitAudioContext);
+  
+    // Create a (1st-order Ambisonic) ResonanceAudio scene.
+    scene = new ResonanceAudio(audioContext);
+  
+    // Send scene's rendered binaural output to stereo out.
+    scene.output.connect(audioContext.destination);
+  
     scene.setRoomProperties(defaultDimensions, defaultMaterial);
-  } else {
-    scene.setRoomProperties(defaultDimensions, roomProperties);
+    
   }
 
+
+  // if(Object.keys(roomProperties).length < 6) {
+  // } else {
+  //   scene.setRoomProperties(defaultDimensions, roomProperties);
+  // }
+  
 
   //can add this into another function no?
   // Create an audio element. Feed into audio graph.
   x = document.createElement('audio');
-  x.src = 'ryokan.mp3';
+  x.src = 'solo-de-mi.mp3';
   x.crossOrigin = 'anonymous';
   x.load();
 
@@ -107,7 +111,7 @@ function initAudio() {
   xSource.connect(source.input);
   audioReady = true;
 }
-*/
+
 
 // setAmbisonicOrder(order)
 
@@ -130,3 +134,57 @@ function initAudio() {
 //for tomorrow: make a scene that will take those room property parameters. 
 //consider a menu before the room properties one that you are able to set the speed of sound, ambisonic order, and maybe add more room wall props, maybe onnnnnnnnnn the menu before choosing the each wall one.
 //idk, think about it 
+
+
+// a-frame components relating to the Resonance Audio SDK and audio context 
+
+AFRAME.registerComponent('register-room-property', {
+  init: function () {
+        this.el.addEventListener('click', function (evt) {
+        let dimensions = 20;
+        let material = this.getAttribute("src").replace("#", "");
+        scene.setRoomProperties(setAllRoomDimensions(dimensions), setAllRoomProperties(material));
+        // var sceneEl = document.querySelector('a-scene');
+    });
+  }
+});
+
+
+AFRAME.registerComponent('listener', {
+  init () {
+      this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
+  },
+  tick: function () { 
+      this.cameraMatrix4 = this.el.object3D.matrixWorld;
+      if(scene) 
+        scene.setListenerFromMatrix(this.cameraMatrix4);
+  }
+});
+
+AFRAME.registerComponent('x', {
+  init: function () {
+    this.wpVector = new THREE.Vector3();
+    var isPlaying = false;
+    
+    // console.log(audioContext.state);
+    this.el.addEventListener('click', function () {
+      this.setAttribute('color', 'pink');
+      if(audioContext)
+        audioContext.resume();
+
+      if(isPlaying==false && x){
+        x.play();
+        isPlaying=true;
+      }else if(isPlaying==true && x){
+        x.pause();
+        isPlaying=false;
+      }
+    });
+  },
+  
+  tick: function () {
+    if(source){
+      source.setPosition(this.el.object3D.getWorldPosition(this.wpVector).x, this.el.object3D.getWorldPosition(this.wpVector).y, this.el.object3D.getWorldPosition(this.wpVector).z);
+    }
+  }
+});

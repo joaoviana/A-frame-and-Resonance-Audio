@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "budo --live --verbose --port 3000 --open"
+    "start": "budo --live --port 3000 --open"
   },
   "author": "Joao Viana",
   "license": "ISC",

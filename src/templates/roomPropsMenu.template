@@ -4,7 +4,7 @@
                 <a-text width="2" position="-.42 .7 0 " value="Left Wall Material:" text=""></a-text>  
             </a-box>
             <a-entity rotation="0 10 0" position="-1.75 2.22 -2.40" layout="type: box; margin:.5;columns:2">
-                <a-box animate-menu-item-on-hover register-selection rotation="0 10 0" class="left-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+                <a-box animate-menu-item-on-hover register-selection rotation="0 10 0" class="left-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                     <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
                 </a-box>
                 <a-box animate-menu-item-on-hover register-selection rotation="0 10 0" class="left-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
@@ -24,7 +24,7 @@
                 <a-text width="2" position="-.42 .7 0 " value="Front Wall Material:" text=""></a-text>  
             </a-box>
             <a-entity  position="-0.35 2.22 -2.47" layout="type: box; margin:.5;columns:2">
-                <a-box animate-menu-item-on-hover register-selection class="front-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+                <a-box animate-menu-item-on-hover register-selection class="front-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                     <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
                 </a-box>
                 <a-box animate-menu-item-on-hover register-selection class="front-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
@@ -44,7 +44,7 @@
                     <a-text width="2" position="-.42 .7 0 " value="Back Wall Material:" text=""></a-text>  
                 </a-box>
                 <a-entity  position="-0.35 0.9 -2.47" layout="type: box; margin:.5;columns:2">
-                    <a-box animate-menu-item-on-hover register-selection class="back-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+                    <a-box animate-menu-item-on-hover register-selection class="back-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                         <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
                     </a-box>
                     <a-box animate-menu-item-on-hover register-selection class="back-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
@@ -64,7 +64,7 @@
                 <a-text width="2" position="-.42 .7 0 " value="Right Wall Material:" text=""></a-text>  
             </a-box>
             <a-entity rotation="0 -10 0" position="1.05 2.22 -2.47" layout="type: box; margin:.5;columns:2">
-            <a-box animate-menu-item-on-hover register-selection class="right-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+            <a-box animate-menu-item-on-hover register-selection class="right-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                 <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
             </a-box>
             <a-box animate-menu-item-on-hover register-selection class="right-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
@@ -84,7 +84,7 @@
                 <a-text width="2" position="-.35 .7 0 " value="Floor Material:" text=""></a-text>  
             </a-box>
             <a-entity  rotation="0 -10 0" position="1.05 0.9 -2.47" layout="type: box; margin:.5;columns:2">
-                <a-box animate-menu-item-on-hover register-selection class="floor-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+                <a-box animate-menu-item-on-hover register-selection class="floor-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                     <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
                 </a-box>
                 <a-box animate-menu-item-on-hover register-selection class="floor-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
@@ -104,7 +104,7 @@
                 <a-text width="2" position="-.42 .7 0 " value="Ceiling Material:" text=""></a-text>  
             </a-box>
             <a-entity  rotation="0 10 0" position="-1.75 0.9 -2.40" layout="type: box; margin:.5;columns:2">
-                <a-box animate-menu-item-on-hover register-selection class="ceiling-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains">
+                <a-box animate-menu-item-on-hover register-selection class="ceiling-wall" scale=".27 .27 .03" material="shader:flat" src="#curtains-heavy">
                     <a-text position="-.45 .85 .1" width="6" value="Curtains"></a-text>
                 </a-box>
                 <a-box animate-menu-item-on-hover register-selection class="ceiling-wall" scale=".27 .27 .03" material="shader:flat" src="#foam">
