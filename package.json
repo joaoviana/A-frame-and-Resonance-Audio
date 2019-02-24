@@ -1,0 +1,16 @@
+{
+  "name": "major-project-a-frame-resonance-audio",
+  "version": "1.0.0",
+  "description": "an understanding of human ear perception, modern spatialisation techniques and artifical reverberation in WebVR - using A-Frame and the Resonance Audio SDK",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo --live --verbose --port 3000 --open"
+  },
+  "author": "Joao Viana",
+  "license": "ISC",
+  "dependencies": {
+    "budo": "^11.6.0",
+    "resonance-audio": "^1.0.0"
+  }
+}
