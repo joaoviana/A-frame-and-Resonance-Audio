@@ -161,7 +161,7 @@ AFRAME.registerComponent('listener', {
   }
 });
 
-AFRAME.registerComponent('x', {
+AFRAME.registerComponent('default-menu-sound-source', {
   init: function () {
     this.wpVector = new THREE.Vector3();
     var isPlaying = false;
@@ -188,3 +188,7 @@ AFRAME.registerComponent('x', {
     }
   }
 });
+
+
+
+

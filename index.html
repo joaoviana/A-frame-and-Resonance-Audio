@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MP - Music Computing</title>
 
+    <!-- //www.aframe-ra-mc.netlify.com -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script><!-- /.src -->
     
@@ -91,19 +92,19 @@
         <!-- <a-box startbutton id="boxId" position="0 0.5 -3" rotation="0 45 0" color="blue"></a-box> -->
 
         <!-- Main Menu -->
-        <a-entity id="main-menu" template="src: ./src/templates/mainMenu.template" visible="false"></a-entity>
+        <a-entity id="main-menu" template="src: ./src/templates/mainMenu.template" visible="false" material="visible: false"></a-entity>
 
         <!-- Menu Selection -->
-        <a-entity id="selection-menu" template="src: ./src/templates/selectionMenu.template" visible="false"></a-entity>
+        <a-entity id="selection-menu" template="src: ./src/templates/selectionMenu.template" visible="false" material="visible: false"></a-entity>
 
-        <a-entity testing-menu id="default-menu" template="src: ./src/templates/defaultMenu.template" visible="true"></a-entity>
+        <a-entity id="default-menu" template="src: ./src/templates/defaultMenu.template" visible="false" material="visible: false"></a-entity>
 
-        <!-- <a-entity id="customise-menu" template="src: ./src/templates/customiseMenu.template" visible="false"></a-entity> -->
-
+        <a-entity id="customise-menu" template="src: ./src/templates/customiseMenu.template" visible="true" material="visible:true"></a-entity>
+6
         <!-- <a-entity id="learn-menu" template="src: ./src/templates/learnMenu.template" visible="false"></a-entity> -->
 
         <!-- Wall Material Selection Menus START--> 
-        <a-entity id="room-props-menu" template="src: ./src/templates/roomPropsMenu.template" visible="false"></a-entity>
+        <!-- <a-entity id="room-props-menu" template="src: ./src/templates/roomPropsMenu.template" visible="true"></a-entity> -->
          <!-- Wall Material Selection Menus START-->
     </a-scene>
     
