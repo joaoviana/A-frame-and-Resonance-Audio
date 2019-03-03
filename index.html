@@ -41,6 +41,8 @@
     
     <script src="./src/scripts/DefaultMenu/init.js"></script>
 
+    <script src="./src/scripts/CustomiseMenu/init.js"></script>
+
     <!-- Room Model Config with Resonance Audio -->
         <!-- <script src="./src/scripts/room-models.js" type="text/javascript"></script> -->
         <!-- <script src="./src/scripts/components.js" type="text/javascript"></script>   -->
@@ -82,7 +84,7 @@
         <!-- Asset Management END -->
 
         <!-- A-Scene START -->
-        <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false"></a-box>
+        <!-- <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false"></a-box> -->
         <a-entity environment="preset:contact; playArea:1.25; groundYScale: 50;"></a-entity>
 
         <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
@@ -106,9 +108,10 @@
 
         <!-- Main Menu -->
         <!-- an a-entity that will serve as a mask to do template swapping aka scene swapping and in order to prevent bubbling of clicks and clicking on hidden elements. also it increases performance -->
-        <a-entity id="mask" template="src: ./src/templates/mainMenu/mainMenu.template"></a-entity>
-        <!-- testing just the default menu scene -->
-        <!-- <a-entity id="mask" template="src: ./src/templates/defaultMenu/defaultMenu.template"></a-entity> -->
+        <!-- <a-entity id="mask" template="src: ./src/templates/mainMenu/mainMenu.template"></a-entity> -->
+
+        <!-- testing just the customise menu 4 scene -->
+        <a-entity id="mask" template="src: ./src/templates/customiseMenu/customiseMenu4.template"></a-entity>
 
         <!-- <a-entity id="main-menu" template="src: ./src/templates/mainMenu/mainMenu.template"></a-entity> -->
 

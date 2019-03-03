@@ -1,0 +1,78 @@
+<a-entity id="customise-menu-2" >
+  <a-text
+    id="customise-menu-title-2"
+    material="shader:flat"
+    width="4"
+    rotation="0 0 0"
+    position="-1 2.3 -1.5"
+    value="Select an audio source"
+    text=""
+  ></a-text>
+  <a-entity id="customise-menu-entity-2">
+    <a-box
+      class="selection-box"
+      animate-menu-on-hover
+      material="color:white;opacity:0.9"
+      width="2.5"
+      height="3"
+      position="0 1 -2.5"
+      scale="0.8 .8 .01"
+      geometry=""
+    >
+    </a-box>
+    <a-box
+      class="selection-box"
+      sound-file-selected
+      animate-menu-on-hover
+      material="color:blue;opacity:0.9"
+      width="2"
+      height="0.6"
+      position="0 1.7 -2.4"
+      scale="0.8 .8 .01"
+      geometry=""
+    >
+      <a-text
+        width="4"
+        rotation="0 0 0"
+        position="-1 0 1"
+        value="funky"
+      ></a-text>
+    </a-box>
+    <a-box
+      class="selection-box"
+      sound-file-selected
+      animate-menu-on-hover
+      material="color:blue;opacity:0.9"
+      width="2"
+      height="0.6"
+      position="0 1.15 -2.4"
+      scale="0.8 .8 .01"
+      geometry=""
+    >
+      <a-text
+        width="4"
+        rotation="0 0 0"
+        position="-1 0 1"
+        value="trippy"
+      ></a-text>
+    </a-box>
+    <a-box
+      class="selection-box"
+      sound-file-selected
+      animate-menu-on-hover
+      material="color:blue;opacity:0.9"
+      width="2"
+      height="0.6"
+      position="0 0.6 -2.4"
+      scale="0.8 .8 .01"
+      geometry=""
+    >
+      <a-text
+        width="4"
+        rotation="0 0 0"
+        position="-1 0 1"
+        value="spoken"
+      ></a-text>
+    </a-box>
+  </a-entity>
+</a-entity>

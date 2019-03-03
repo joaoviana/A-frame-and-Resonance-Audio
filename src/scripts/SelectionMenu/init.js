@@ -23,6 +23,11 @@ AFRAME.registerComponent("select-menu-box", {
         initAudioDefault();
         //
       } else if (menuSelected == "customise") {
+        mask.setAttribute(
+          "template",
+          "src",
+          "./src/templates/customiseMenu/customiseMenu1.template"
+        );
         //
       } else if (menuSelected == "learn") {
         //
