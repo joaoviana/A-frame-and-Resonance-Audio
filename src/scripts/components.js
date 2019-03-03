@@ -22,7 +22,6 @@ AFRAME.registerComponent("set-props-button", {
       setPropsButton.setAttribute("visible", "false");
 
       console.log("room properties to send: ", roomProperties);
-      // initAudio();
     });
   }
 });
@@ -72,7 +71,7 @@ AFRAME.registerComponent("object-sound-src", {
       if (this.id == "sphere-obj") {
         customiseMenuObject.geometry = "sphere";
       } else if (this.id == "cube-obj") {
-        customiseMenuObject.geometry = "cube";
+        customiseMenuObject.geometry = "box";
       } else if (this.id == "torus-obj") {
         customiseMenuObject.geometry = "torus";
       }
