@@ -46,4 +46,7 @@
     >
     </a-torus>
   </a-entity>
+  <a-box animate-menu-on-hover go-back id="go-back-selection-menu" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-1.8 2.5 -2.5" scale="1 1 0.05" geometry=""> 
+    <a-text position="-0.25 0 1" width="2.4" value="Go back?">  </a-text>
+  </a-box>  
 </a-entity>

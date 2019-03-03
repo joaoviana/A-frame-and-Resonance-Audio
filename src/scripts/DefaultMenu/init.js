@@ -1,7 +1,7 @@
 let audioContext;
 let scene;
-let x;
-let xSource;
+let defaultSound;
+let defaultSoundSource;
 let source;
 let audioReady = false;
 
@@ -27,16 +27,16 @@ function initAudioDefault() {
 
   //can add this into another function no?
   // Create an audio element. Feed into audio graph.
-  x = document.createElement("audio");
-  x.src = "./soundFiles/funky.mp3";
-  x.crossOrigin = "anonymous";
-  x.load();
+  defaultSound = document.createElement("audio");
+  defaultSound.src = "./soundFiles/funky.mp3";
+  defaultSound.crossOrigin = "anonymous";
+  defaultSound.load();
 
-  xSource = audioContext.createMediaElementSource(x);
+  defaultSoundSource = audioContext.createMediaElementSource(defaultSound);
 
   // Create a Source, connect desired audio input to it.
   source = scene.createSource();
-  xSource.connect(source.input);
+  defaultSoundSource.connect(source.input);
   audioReady = true;
 }
 
@@ -73,11 +73,11 @@ AFRAME.registerComponent("default-menu-sound-source", {
       this.setAttribute("color", "pink");
       if (audioContext) audioContext.resume();
 
-      if (isPlaying == false && x) {
-        x.play();
+      if (isPlaying == false && defaultSound) {
+        defaultSound.play();
         isPlaying = true;
-      } else if (isPlaying == true && x) {
-        x.pause();
+      } else if (isPlaying == true && defaultSound) {
+        defaultSound.pause();
         isPlaying = false;
       }
     });
