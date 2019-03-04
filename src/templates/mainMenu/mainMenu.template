@@ -1,4 +1,4 @@
 <a-text id="room-props-title" material="shader:flat" width="4" rotation="0 0 0" position="-0.5 2.5 -2.5" value="Welcome" text=""></a-text> 
-<a-box animate-menu-on-hover start-button position="-0.1 1.5 -2.5" width="1" height="0.3" depth="0.06" color="#93648D">
+<a-box class="menu" animate-menu-on-hover start-button position="-0.1 1.5 -2.5" width="1" height="0.3" depth="0.06" color="#93648D">
     <a-text position="-.3 0.3 -0.3" width="4"value="START"></a-text>  
 </a-box>
