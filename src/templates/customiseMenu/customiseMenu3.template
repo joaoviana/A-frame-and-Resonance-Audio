@@ -11,6 +11,7 @@
   <a-entity class="menu-wall-left room-props-menu">
     <a-box
       animate-menu-on-hover
+      class="menu" 
       material="color:white;opacity:0.9"
       rotation="0 10 0"
       position="-1.50 2.5 -2.5"
@@ -33,7 +34,7 @@
         animate-menu-item-on-hover
         register-selection
         rotation="0 10 0"
-        class="left-wall"
+        class="left-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -44,7 +45,7 @@
         animate-menu-item-on-hover
         register-selection
         rotation="0 10 0"
-        class="left-wall"
+        class="left-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -55,7 +56,7 @@
         animate-menu-item-on-hover
         register-selection
         rotation="0 10 0"
-        class="left-wall"
+        class="left-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -66,7 +67,7 @@
         animate-menu-item-on-hover
         register-selection
         rotation="0 10 0"
-        class="left-wall"
+        class="left-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -81,6 +82,7 @@
   >
     <a-box
       animate-menu-on-hover
+      clss="menu"
       material="color:white;opacity:0.9"
       rotation="0 0 0"
       position="-0.1 2.5 -2.5"
@@ -101,7 +103,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="front-wall"
+        class="front-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -111,7 +113,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="front-wall"
+        class="front-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -121,7 +123,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="front-wall"
+        class="front-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -131,7 +133,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="front-wall"
+        class="front-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -164,7 +166,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="back-wall"
+        class="back-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -174,7 +176,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="back-wall"
+        class="back-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -184,7 +186,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="back-wall"
+        class="back-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -194,7 +196,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="back-wall"
+        class="back-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -228,7 +230,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="right-wall"
+        class="right-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -238,7 +240,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="right-wall"
+        class="right-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -248,7 +250,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="right-wall"
+        class="right-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -258,7 +260,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="right-wall"
+        class="right-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -292,7 +294,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="floor-wall"
+        class="floor-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -302,7 +304,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="floor-wall"
+        class="floor-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -312,7 +314,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="floor-wall"
+        class="floor-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -322,7 +324,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="floor-wall"
+        class="floor-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -356,7 +358,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="ceiling-wall"
+        class="ceiling-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#curtain-heavy"
@@ -366,7 +368,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="ceiling-wall"
+        class="ceiling-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#foam"
@@ -376,7 +378,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="ceiling-wall"
+        class="ceiling-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#transparent"
@@ -386,7 +388,7 @@
       <a-box
         animate-menu-item-on-hover
         register-selection
-        class="ceiling-wall"
+        class="ceiling-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
         src="#marble"
@@ -397,7 +399,7 @@
   </a-entity>
 
   <a-box
-    class="room-props-button"
+    class="room-props-button menu"
     animate-menu-on-hover
     set-props-button
     position="-0.1 0.3 -2.5"
@@ -409,7 +411,7 @@
     <a-text position="-.6 .1 -0.3" width="4" value="submit selection"></a-text>
   </a-box>
 
-  <a-box animate-menu-on-hover go-back id="go-back-customise-menu-2" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-2.5 1.8 -2.5" scale="1 1 0.05" geometry=""> 
+  <a-box class="menu" animate-menu-on-hover go-back id="go-back-customise-menu-2" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-2.5 1.8 -2.5" scale="1 1 0.05" geometry=""> 
     <a-text position="-0.25 0 1" width="2.4" value="Go back?">  </a-text>
   </a-box>  
 </a-entity>

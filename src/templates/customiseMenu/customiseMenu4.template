@@ -10,7 +10,7 @@
   ></a-text>
   <a-entity id="customise-menu-entity-4">
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       material="color:white;opacity:1"
       width="2"
       height="3"
@@ -26,7 +26,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-speed-of-sound
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -39,7 +39,7 @@
       <a-text width="4" rotation="0 0 0" position="0 0 1" value="343"></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-speed-of-sound
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -52,7 +52,7 @@
       <a-text width="4" rotation="0 0 0" position="0 0 1" value="500"></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-speed-of-sound
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -66,7 +66,7 @@
     </a-box>
 
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       material="color:white;opacity:1"
       width="2"
       height="3"
@@ -82,7 +82,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-sound-src-gain
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -95,7 +95,7 @@
       <a-text width="4" rotation="0 0 0" position="-.2 0 1" value="1"></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-sound-src-gain
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -113,7 +113,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-sound-src-gain
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -132,7 +132,7 @@
     </a-box>
 
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       material="color:white;opacity:1"
       width="2"
       height="3"
@@ -148,7 +148,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-rolloff
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -166,7 +166,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-rolloff
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -184,7 +184,7 @@
       ></a-text>
     </a-box>
     <a-box
-      class="selection-box"
+      class="selection-box menu"
       register-rolloff
       animate-menu-on-hover
       material="color:white;opacity:1"
@@ -204,7 +204,7 @@
   </a-entity>
 
   <a-box
-    class="extra-props-button"
+    class="extra-props-button menu"
     animate-menu-on-hover
     set-extra-props-button
     position="0 0.3 -2"
@@ -216,7 +216,7 @@
     <a-text position="-.6 .1 -0.3" width="4" value="submit selection"></a-text>
   </a-box>
 
-  <a-box animate-menu-on-hover go-back id="go-back-customise-menu-3" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-1 3 -1.5" scale="1 1 0.05" geometry=""> 
+  <a-box animate-menu-on-hover go-back class="menu" id="go-back-customise-menu-3" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-1 3 -1.5" scale="1 1 0.05" geometry=""> 
     <a-text position="-0.25 0 1" width="2.4" value="Go back?">  </a-text>
   </a-box> 
 </a-entity>
