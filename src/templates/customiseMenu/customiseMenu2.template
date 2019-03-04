@@ -1,4 +1,4 @@
-<a-entity id="customise-menu-2" >
+<a-entity id="customise-menu-2" class="menu" >
   <a-text
     id="customise-menu-title-2"
     material="shader:flat"

@@ -1,4 +1,4 @@
-<a-entity id="menu customise-menu-3">
+<a-entity id="menu customise-menu-3" class="menu">
   <a-text
     id="room-props-title customise-menu-title-3"
     material="shader:flat"
