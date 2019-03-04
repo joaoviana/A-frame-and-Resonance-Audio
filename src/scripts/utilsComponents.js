@@ -47,6 +47,9 @@ AFRAME.registerComponent("go-back", {
         );
       } else if (this.id == "go-back-selection-menu") {
         console.log(mask);
+        console.log(defaultSoundSource);
+        defaultSoundSource.disconnect(source.input);
+        console.log(defaultSoundSource);
         mask.setAttribute(
           "template",
           "src",
