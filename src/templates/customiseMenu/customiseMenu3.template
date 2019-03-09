@@ -48,9 +48,9 @@
         class="left-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover
@@ -116,9 +116,9 @@
         class="front-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover
@@ -179,9 +179,9 @@
         class="back-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover
@@ -243,9 +243,9 @@
         class="right-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover
@@ -307,9 +307,9 @@
         class="floor-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover
@@ -371,9 +371,9 @@
         class="ceiling-wall menu"
         scale=".27 .27 .03"
         material="shader:flat"
-        src="#foam"
+        src="#metal"
       >
-        <a-text position="-.3 .85 .1" width="6" value="Foam"></a-text>
+        <a-text position="-.3 .85 .1" width="6" value="Metal"></a-text>
       </a-box>
       <a-box
         animate-menu-item-on-hover

@@ -1,8 +1,8 @@
-let audioContext;
-let scene;
+let defaultAudioContext;
+let defaultScene;
 let defaultSound;
 let defaultSoundSource;
-let source;
+let defaultSource;
 let audioReady = false;
 
 function initAudioDefault() {
@@ -15,28 +15,36 @@ function initAudioDefault() {
 
   let defaultMaterial = setAllRoomProperties("transparent");
 
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  defaultAudioContext = new (window.AudioContext || window.webkitAudioContext)();
 
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
-  scene = new ResonanceAudio(audioContext);
-
+  defaultScene = new ResonanceAudio(defaultAudioContext);
+  // console.log(scene);
+  
+  // console.log(scene);
   // Send scene's rendered binaural output to stereo out.
-  scene.output.connect(audioContext.destination);
+  defaultScene.output.connect(defaultAudioContext.destination);
 
-  scene.setRoomProperties(defaultDimensions, defaultMaterial);
+  defaultScene.setRoomProperties(defaultDimensions, defaultMaterial);
+
+  
 
   //can add this into another function no?
   // Create an audio element. Feed into audio graph.
   defaultSound = document.createElement("audio");
-  defaultSound.src = "./soundFiles/funky.mp3";
+  defaultSound.src = "./soundFiles/funky2.mp3";
   defaultSound.crossOrigin = "anonymous";
+  
   defaultSound.load();
 
-  defaultSoundSource = audioContext.createMediaElementSource(defaultSound);
+  defaultSoundSource = defaultAudioContext.createMediaElementSource(defaultSound);
 
   // Create a Source, connect desired audio input to it.
-  source = scene.createSource();
-  defaultSoundSource.connect(source.input);
+  defaultSource = defaultScene.createSource();
+  console.log(defaultSource);
+  defaultSource.setGain(0.9);
+  console.log(defaultSource);
+  defaultSoundSource.connect(defaultSource.input);
   audioReady = true;
 }
 
@@ -46,7 +54,7 @@ AFRAME.registerComponent("register-room-property", {
     this.el.addEventListener("click", function(evt) {
       let dimensions = 20;
       let material = this.getAttribute("src").replace("#", "");
-      scene.setRoomProperties(
+      defaultScene.setRoomProperties(
         setAllRoomDimensions(dimensions),
         setAllRoomProperties(material)
       );
@@ -54,15 +62,7 @@ AFRAME.registerComponent("register-room-property", {
   }
 });
 
-AFRAME.registerComponent("listener", {
-  init() {
-    this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
-  },
-  tick: function() {
-    this.cameraMatrix4 = this.el.object3D.matrixWorld;
-    if (scene) scene.setListenerFromMatrix(this.cameraMatrix4);
-  }
-});
+
 
 AFRAME.registerComponent("default-menu-sound-source", {
   init: function() {
@@ -71,7 +71,7 @@ AFRAME.registerComponent("default-menu-sound-source", {
     
     this.el.addEventListener("click", function() {
       this.setAttribute("color", "pink");
-      if (audioContext) audioContext.resume();
+      if (defaultAudioContext) defaultAudioContext.resume();
 
       if (isPlaying == false && defaultSound) {
         defaultSound.play();
@@ -84,8 +84,8 @@ AFRAME.registerComponent("default-menu-sound-source", {
   },
 
   tick: function() {
-    if (source) {
-      source.setPosition(
+    if (defaultSource) {
+      defaultSource.setPosition(
         this.el.object3D.getWorldPosition(this.wpVector).x,
         this.el.object3D.getWorldPosition(this.wpVector).y,
         this.el.object3D.getWorldPosition(this.wpVector).z

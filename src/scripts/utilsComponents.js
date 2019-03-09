@@ -1,3 +1,19 @@
+AFRAME.registerComponent("listener", {
+  schema: {
+    color: {default: '#FFF'},
+    size: {type: 'int', default: 5}
+  },
+  init() {
+    console.log('SCHEMA WORKED: ',this.data.color);
+    this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
+  },
+  tick: function() {
+    this.cameraMatrix4 = this.el.object3D.matrixWorld;
+    if (defaultScene) defaultScene.setListenerFromMatrix(this.cameraMatrix4);
+
+  }
+});
+
 AFRAME.registerComponent("animate-menu-on-hover", {
   init: function() {
     this.el.addEventListener("mouseover", function(evt) {
@@ -46,10 +62,13 @@ AFRAME.registerComponent("go-back", {
           "./src/templates/mainMenu/mainMenu.template"
         );
       } else if (this.id == "go-back-selection-menu") {
-        console.log(mask);
-        console.log(defaultSoundSource);
-        defaultSoundSource.disconnect(source.input);
-        console.log(defaultSoundSource);
+        console.log('audio context: ', defaultAudioContext);
+        console.log('scene: ', defaultScene);
+        defaultAudioContext = null;
+        defaultScene = null
+        console.log('scene after null: ', defaultScene);
+        console.log('audio context after null: ', defaultAudioContext);
+        defaultSoundSource.disconnect(defaultSource.input);
         mask.setAttribute(
           "template",
           "src",
@@ -75,6 +94,13 @@ AFRAME.registerComponent("go-back", {
           "template",
           "src",
           "./src/templates/customiseMenu/customiseMenu3.template"
+        );
+      } else if (this.id == "go-back-customise-menu-4") {
+        console.log(mask);
+        mask.setAttribute(
+          "template",
+          "src",
+          "./src/templates/customiseMenu/customiseMenu4.template"
         );
       }
     });

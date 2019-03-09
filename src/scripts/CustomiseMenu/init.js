@@ -1,5 +1,6 @@
 let customiseMenuObject = {
-  roomProperties: {}
+  roomProperties: {
+  }
 };
 
 // CUSTOMISE MENU - 1
@@ -55,10 +56,12 @@ AFRAME.registerComponent("sound-file-selected", {
 AFRAME.registerComponent("register-selection", {
   init: function() {
     this.el.addEventListener("click", function(e) {
+      console.log('HERE');
       //   let sceneEl = document.querySelector("a-scene");
       //   let mask = sceneEl.querySelector("#mask");
       let wallMaterial = this.getAttribute("src").replace("#", "");
-      let wall = this.getAttribute("class");
+      let wall = this.classList[0];
+      console.log(wall);
 
       //setting custom room materials
       if (wall == "floor-wall") {
@@ -74,6 +77,7 @@ AFRAME.registerComponent("register-selection", {
       } else if (wall == "back-wall") {
         customiseMenuObject.roomProperties.back = wallMaterial;
       }
+      console.log('REGISTERED SELECTION FOR ROOM PROP:', wall, " and ", wallMaterial, " and ", customiseMenuObject);
     });
   }
 });

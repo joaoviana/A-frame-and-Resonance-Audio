@@ -73,8 +73,10 @@ function initAudioCustomised(customPropsObj) {
 
   //instantiate audio context and RA
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', audioContext);
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
   scene = new ResonanceAudio(audioContext);
+  console.log('SCENE IN CUSTOMISED SCENE', scene);
 
   // Set room acoustics properties.
   scene.setRoomProperties(roomDimensions, customMaterial);
@@ -83,6 +85,8 @@ function initAudioCustomised(customPropsObj) {
   // Set speed of sound
   scene.setSpeedOfSound(customPropsObj.speedOfSound);
   console.log("speed of sound", customPropsObj.speedOfSound);
+
+  console.log('SCENE AFTER BEING SET NEW PROPS: ', scene);
 
   // Send scene's rendered binaural output to stereo out.
   scene.output.connect(audioContext.destination);
@@ -101,11 +105,13 @@ function initAudioCustomised(customPropsObj) {
 
   // Create a Source, connect desired audio input to it.
   source = scene.createSource();
+  console.log('SOURCE BEFORE SET PROPS', source);
   source.setGain(customPropsObj.gain);
   source.setRolloff(customPropsObj.rolloff);
-  console.log("source", source);
+  console.log('SOURCE AFTER PROPS LOL: ', source)
+  // console.log("source", source);
   customAudioSource.connect(source.input);
-  console.log("custom audio source", customAudioSource);
+  // console.log("custom audio source", customAudioSource);
   customAudioReady = true;
 }
 
