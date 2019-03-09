@@ -86,11 +86,11 @@
 
         <!-- A-Scene START -->
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false"></a-box>
-        <a-entity environment="preset:contact; playArea:1.25; groundYScale: 50;"></a-entity>
+        <a-entity environment="preset:starry; playArea:1.25; groundYScale: 50;"></a-entity>
 
         <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
             <a-camera wasd-controls="acceleration: 100">
-                <a-entity listener class="gazecaster"></a-entity>
+                <a-entity listener="color: #333" class="gazecaster"></a-entity>
             </a-camera>
             <a-entity  class="right-controller"></a-entity>
             <a-entity  class="left-controller"></a-entity>
