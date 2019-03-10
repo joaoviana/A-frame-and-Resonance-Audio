@@ -26,6 +26,7 @@
     <!-- A-Frame Physics system for A-Frame VR -->
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
 
 
 
@@ -83,12 +84,11 @@
 
         </a-assets>
         <!-- Asset Management END -->
-
         <!-- A-Scene START -->
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false"></a-box>
         <a-entity environment="preset:starry; playArea:1.25; groundYScale: 50;"></a-entity>
 
-        <a-entity progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
+        <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
             <a-camera wasd-controls="acceleration: 100">
                 <a-entity listener="color: #333" class="gazecaster"></a-entity>
             </a-camera>
