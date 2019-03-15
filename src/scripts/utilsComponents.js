@@ -9,7 +9,15 @@ AFRAME.registerComponent("listener", {
   },
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
-    if (defaultScene) defaultScene.setListenerFromMatrix(this.cameraMatrix4);
+    if (defaultScene)  {
+
+      defaultScene.setListenerFromMatrix(this.cameraMatrix4);
+      console.log('hey, default scene is not null')
+    }
+    if (customScene) {
+      customScene.setListenerFromMatrix(this.cameraMatrix4);
+      console.log('hey, custom scene is not null');
+    }
 
   }
 });
@@ -62,13 +70,24 @@ AFRAME.registerComponent("go-back", {
           "./src/templates/mainMenu/mainMenu.template"
         );
       } else if (this.id == "go-back-selection-menu") {
-        console.log('audio context: ', defaultAudioContext);
-        console.log('scene: ', defaultScene);
-        defaultAudioContext = null;
-        defaultScene = null
-        console.log('scene after null: ', defaultScene);
-        console.log('audio context after null: ', defaultAudioContext);
-        defaultSoundSource.disconnect(defaultSource.input);
+        if (defaultAudioContext || defaultScene) {
+          console.log('def audio context: ', defaultAudioContext);
+          console.log('def scene: ', defaultScene);
+          defaultSoundSource.disconnect(defaultSource.input);
+          defaultAudioContext = null;
+          defaultScene = null
+          console.log('def scene after null: ', defaultScene);
+          console.log('def audio context after null: ', defaultAudioContext);
+        }
+        if (customAudioContext || customScene) {
+          console.log('cust audio context: ', customAudioContext);
+          console.log('cust scene: ', customScene);
+          customAudioSource.disconnect(customSource.input);
+          customAudioContext = null;
+          customScene = null
+          console.log('cust scene after null: ', customScene);
+          console.log('cust audio context after null: ', customAudioContext);
+        }
         mask.setAttribute(
           "template",
           "src",

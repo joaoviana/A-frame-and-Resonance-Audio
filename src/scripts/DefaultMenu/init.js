@@ -41,11 +41,15 @@ function initAudioDefault() {
 
   // Create a Source, connect desired audio input to it.
   defaultSource = defaultScene.createSource();
-  console.log(defaultSource);
+  // console.log(defaultSource);
   defaultSource.setGain(0.9);
-  console.log(defaultSource);
+  // console.log(defaultSource);
   defaultSoundSource.connect(defaultSource.input);
   audioReady = true;
+
+  console.log('default source: ', defaultSource);
+  console.log('default scene: ', defaultScene);
+  console.log('default audio context: ', defaultAudioContext);
 }
 
 // a-frame components relating to the Resonance Audio SDK and audio context
@@ -61,8 +65,6 @@ AFRAME.registerComponent("register-room-property", {
     });
   }
 });
-
-
 
 AFRAME.registerComponent("default-menu-sound-source", {
   init: function() {

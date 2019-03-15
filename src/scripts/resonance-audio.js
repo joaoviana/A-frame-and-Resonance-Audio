@@ -2976,6 +2976,8 @@ function _getDurationsFromProperties(dimensions, coefficients, speedOfSound) {
       (-totalArea * Math.log(1 - meanAbsorbtionArea) + 4 *
       Utils.ROOM_AIR_ABSORPTION_COEFFICIENTS[i] * volume);
   }
+
+  console.log('durations: ', durations);
   return durations;
 }
 
@@ -3097,6 +3099,11 @@ function Room(context, options) {
 
   this.late.output.connect(this._merger, 0, 0);
   this._merger.connect(this.output);
+
+  // console.log('early: ', this.early);
+  // console.log('late: ', this.late);
+  // console.log('late output: ', this.late.output);
+  // console.log('merger: ', this._merger);
 }
 
 
@@ -3305,6 +3312,7 @@ LateReflections.prototype.setDurations = function(durations) {
   let durationsSamples =
     new Float32Array(Utils.NUMBER_REVERB_FREQUENCY_BANDS);
     let sampleRate = this._context.sampleRate;
+  // console.log('durations samples: ', durationsSamples);
 
   for (let i = 0; i < durations.length; i++) {
     // Clamp within suitable range.
@@ -3332,6 +3340,8 @@ LateReflections.prototype.setDurations = function(durations) {
   // Create impulse response buffer.
   let buffer = this._context.createBuffer(1, durationsSamplesMax, sampleRate);
   let bufferData = buffer.getChannelData(0);
+  // console.log('buffer impulse response: ', buffer);
+  // console.log('buffer data', bufferData);
 
   // Create noise signal (computed once, referenced in each band's routine).
   let noiseSignal = new Float32Array(durationsSamplesMax);
@@ -3384,6 +3394,7 @@ LateReflections.prototype.setDurations = function(durations) {
       0.5 * (1 - Math.cos(Utils.TWO_PI * i / (2 * halfHannLength - 1)));
       bufferData[i] *= halfHann;
   }
+  // console.log('buffer: ', buffer);
   this._convolver.buffer = buffer;
 };
 

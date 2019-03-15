@@ -198,7 +198,7 @@
         width="4"
         rotation="0 0 0"
         position="-.5 0 1"
-        value="240"
+        value="none"
       ></a-text>
     </a-box>
   </a-entity>

@@ -2,6 +2,14 @@ let customObject = {};
 let customAudio, customAudioSource;
 let customAudioReady = false;
 
+
+let customAudioContext;
+let customScene;
+let customSound;
+let customSoundSource;
+let customSource;
+
+
 //handle selections and fallbacks.
 function handleCustomisedSelection(customPropsObj) {
   console.log(customPropsObj);
@@ -62,7 +70,6 @@ function handleCustomisedSelection(customPropsObj) {
 }
 
 function initAudioCustomised(customPropsObj) {
-  console.log("object in init audio", customPropsObj);
   let roomDimensions = {
     width: 20,
     height: 20,
@@ -72,24 +79,22 @@ function initAudioCustomised(customPropsObj) {
   let customMaterial = setCustomRoomProperties(customPropsObj.roomProperties);
 
   //instantiate audio context and RA
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', audioContext);
+  customAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+  console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', customAudioContext);
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
-  scene = new ResonanceAudio(audioContext);
-  console.log('SCENE IN CUSTOMISED SCENE', scene);
-
-  // Set room acoustics properties.
-  scene.setRoomProperties(roomDimensions, customMaterial);
-  console.log("room props: ", scene);
-
-  // Set speed of sound
-  scene.setSpeedOfSound(customPropsObj.speedOfSound);
-  console.log("speed of sound", customPropsObj.speedOfSound);
-
-  console.log('SCENE AFTER BEING SET NEW PROPS: ', scene);
+  customScene = new ResonanceAudio(customAudioContext);
+  // console.log('SCENE IN CUSTOMISED SCENE', scene);
 
   // Send scene's rendered binaural output to stereo out.
-  scene.output.connect(audioContext.destination);
+  customScene.output.connect(customAudioContext.destination);
+
+  // Set room acoustics properties.
+  customScene.setRoomProperties(roomDimensions, customMaterial);
+
+  // Set speed of sound
+  customScene.setSpeedOfSound(customPropsObj.speedOfSound);
+
+  console.log('SCENE AFTER BEING SET NEW PROPS: ', customScene);
 
   //set up the audio source
 
@@ -100,17 +105,17 @@ function initAudioCustomised(customPropsObj) {
   customAudio.src = "./soundFiles/" + customPropsObj.soundFile;
   customAudio.crossOrigin = "anonymous";
   customAudio.load();
-  console.log(customAudio);
-  customAudioSource = audioContext.createMediaElementSource(customAudio);
+  console.log('custom Audio: ', customAudio);
+  customAudioSource = customAudioContext.createMediaElementSource(customAudio);
 
   // Create a Source, connect desired audio input to it.
-  source = scene.createSource();
-  console.log('SOURCE BEFORE SET PROPS', source);
-  source.setGain(customPropsObj.gain);
-  source.setRolloff(customPropsObj.rolloff);
-  console.log('SOURCE AFTER PROPS LOL: ', source)
+  customSource = customScene.createSource();
+  console.log('SOURCE BEFORE SET PROPS', customSource);
+  customSource.setGain(customPropsObj.gain);
+  customSource.setRolloff(customPropsObj.rolloff);
+  console.log('SOURCE AFTER PROPS LOL: ', customSource)
   // console.log("source", source);
-  customAudioSource.connect(source.input);
+  customAudioSource.connect(customSource.input);
   // console.log("custom audio source", customAudioSource);
   customAudioReady = true;
 }
@@ -134,8 +139,9 @@ AFRAME.registerComponent("customise-menu-sound-source", {
     console.log('sound object', this.el);
 
     this.el.addEventListener("click", function() {
+      console.log('this element: ', this);
       this.setAttribute("color", "pink");
-      if (audioContext) audioContext.resume();
+      if (customAudioContext) customAudioContext.resume();
 
       if (isPlaying == false && customAudio) {
         customAudio.play();
@@ -147,8 +153,8 @@ AFRAME.registerComponent("customise-menu-sound-source", {
     });
   },
   tick: function() {
-    if (source) {
-      source.setPosition(
+    if (customSource) {
+      customSource.setPosition(
         this.el.object3D.getWorldPosition(this.wpVector).x,
         this.el.object3D.getWorldPosition(this.wpVector).y,
         this.el.object3D.getWorldPosition(this.wpVector).z
@@ -156,38 +162,3 @@ AFRAME.registerComponent("customise-menu-sound-source", {
     }
   }
 });
-
-// init: function() {
-
-//     this.el.addEventListener("click", function() {
-//       this.setAttribute("color", "pink");
-//       if (audioContext) audioContext.resume();
-
-//       if (isPlaying == false && defaultSound) {
-//         defaultSound.play();
-//         isPlaying = true;
-//       } else if (isPlaying == true && defaultSound) {
-//         defaultSound.pause();
-//         isPlaying = false;
-//       }
-//     });
-//   },
-
-//   tick: function() {
-//     if (source) {
-//       source.setPosition(
-//         this.el.object3D.getWorldPosition(this.wpVector).x,
-//         this.el.object3D.getWorldPosition(this.wpVector).y,
-//         this.el.object3D.getWorldPosition(this.wpVector).z
-//       );
-//     }
-
-//   <a-sphere
-//   id="sound-obj"
-//   default-menu-sound-source
-//   class="cube"
-//   mixin="cube"
-//   position="0 1 -3.25"
-//   radius="1"
-//   material="color:#FFB6C1"
-// ></a-sphere>

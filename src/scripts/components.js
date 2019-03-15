@@ -21,7 +21,7 @@ AFRAME.registerComponent("set-props-button", {
       menuTitle.setAttribute("visible", "false");
       setPropsButton.setAttribute("visible", "false");
 
-      console.log("room properties to send: ", roomProperties);
+      // console.log("room properties to send: ", roomProperties);
     });
   }
 });
@@ -67,7 +67,7 @@ AFRAME.registerComponent("object-sound-src", {
     this.el.addEventListener("click", function(e) {
       e.cancelBubble = true;
       e.stopPropagation();
-      console.log(e);
+      // console.log(e);
       if (this.id == "sphere-obj") {
         customiseMenuObject.geometry = "sphere";
       } else if (this.id == "cube-obj") {
@@ -110,7 +110,7 @@ AFRAME.registerComponent("sound-file-selected", {
       // console.log(customiseMenu3);
       customiseMenu2.setAttribute("visible", "false");
       customiseMenu2.setAttribute("material", "visible: false");
-      console.log("already here");
+      // console.log("already here");
 
       // customiseMenu3.setAttribute("visible", 'true');
       // customiseMenu3.setAttribute("material", 'visible: true');
@@ -163,8 +163,8 @@ AFRAME.registerComponent("register-rolloff", {
       // } else if (fileName == 'none') {
       //     customiseMenuObject.soundFile = 'spoken.mp3';
       // }
-      console.log(customiseMenuObject);
-      console.log(roomProperties);
+      // console.log(customiseMenuObject);
+      // console.log(roomProperties);
       let sceneEl = document.querySelector("a-scene");
       //hide submenu 2, make submenu 3 visible
       let customiseMenu4 = sceneEl.querySelector("#customise-menu-4");
