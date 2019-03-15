@@ -10,13 +10,10 @@ AFRAME.registerComponent("listener", {
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
     if (defaultScene)  {
-
       defaultScene.setListenerFromMatrix(this.cameraMatrix4);
-      console.log('hey, default scene is not null')
     }
     if (customScene) {
       customScene.setListenerFromMatrix(this.cameraMatrix4);
-      console.log('hey, custom scene is not null');
     }
 
   }
@@ -78,6 +75,12 @@ AFRAME.registerComponent("go-back", {
           defaultScene = null
           console.log('def scene after null: ', defaultScene);
           console.log('def audio context after null: ', defaultAudioContext);
+
+          //hiding environment and making a-sky visible
+          let sky = sceneEl.querySelector("#sky");
+          let environment = sceneEl.querySelector("#environment");
+          sky.setAttribute('visible', 'true');
+          environment.setAttribute('environment','active: false');
         }
         if (customAudioContext || customScene) {
           console.log('cust audio context: ', customAudioContext);

@@ -19,15 +19,11 @@ function initAudioDefault() {
 
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
   defaultScene = new ResonanceAudio(defaultAudioContext);
-  // console.log(scene);
-  
-  // console.log(scene);
+
   // Send scene's rendered binaural output to stereo out.
   defaultScene.output.connect(defaultAudioContext.destination);
 
   defaultScene.setRoomProperties(defaultDimensions, defaultMaterial);
-
-  
 
   //can add this into another function no?
   // Create an audio element. Feed into audio graph.
@@ -72,13 +68,15 @@ AFRAME.registerComponent("default-menu-sound-source", {
     var isPlaying = false;
     
     this.el.addEventListener("click", function() {
-      this.setAttribute("color", "pink");
+      
       if (defaultAudioContext) defaultAudioContext.resume();
 
       if (isPlaying == false && defaultSound) {
+        this.setAttribute("color", "green");
         defaultSound.play();
         isPlaying = true;
       } else if (isPlaying == true && defaultSound) {
+        this.setAttribute("color", "pink");
         defaultSound.pause();
         isPlaying = false;
       }
@@ -95,24 +93,3 @@ AFRAME.registerComponent("default-menu-sound-source", {
     }
   }
 });
-
-// setAmbisonicOrder(order)
-
-// /**
-//  * Set the listener's position and orientation using a Three.js Matrix4 object.
-//  * @param {Object} matrix
-//  * The Three.js Matrix4 object representing the listener's world transform.
-//  */
-// ResonanceAudio.prototype.setListenerFromMatrix = function(matrix) {
-//   this._listener.setFromMatrix(matrix);
-
-//   // Update the rest of the scene using new listener position.
-//   this.setListenerPosition(this._listener.position[0],
-//     this._listener.position[1], this._listener.position[2]);
-// };
-
-// .setSpeedOfSound = function(speedOfSound) {
-
-//for tomorrow: make a scene that will take those room property parameters.
-//consider a menu before the room properties one that you are able to set the speed of sound, ambisonic order, and maybe add more room wall props, maybe onnnnnnnnnn the menu before choosing the each wall one.
-//idk, think about it

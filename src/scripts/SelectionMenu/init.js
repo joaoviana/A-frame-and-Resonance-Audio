@@ -14,14 +14,18 @@ AFRAME.registerComponent("select-menu-box", {
 
       //set attribute visible to default-menu customise-menu and learn-menu
       if (menuSelected == "default") {
-        // defaultMenu.setAttribute("visible", 'true');
         mask.setAttribute(
           "template",
           "src",
           "./src/templates/defaultMenu/defaultMenu.template"
         );
+        //hiding a-sky and making environment visible
+        let sky = sceneEl.querySelector("#sky");
+        let environment = sceneEl.querySelector("#environment");
+        sky.setAttribute('visible', 'false');
+        environment.setAttribute('environment','active: true');
         initAudioDefault();
-        //
+        
       } else if (menuSelected == "customise") {
         mask.setAttribute(
           "template",

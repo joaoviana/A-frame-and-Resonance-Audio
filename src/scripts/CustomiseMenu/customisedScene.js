@@ -2,7 +2,6 @@ let customObject = {};
 let customAudio, customAudioSource;
 let customAudioReady = false;
 
-
 let customAudioContext;
 let customScene;
 let customSound;
@@ -65,6 +64,7 @@ function handleCustomisedSelection(customPropsObj) {
   }
 
   customObject = customPropsObj;
+
   //call init audio here with new customPropsObj
   initAudioCustomised(customObject);
 }
@@ -113,42 +113,42 @@ function initAudioCustomised(customPropsObj) {
   console.log('SOURCE BEFORE SET PROPS', customSource);
   customSource.setGain(customPropsObj.gain);
   customSource.setRolloff(customPropsObj.rolloff);
-  console.log('SOURCE AFTER PROPS LOL: ', customSource)
-  // console.log("source", source);
+  console.log('SOURCE AFTER PROPS LOL: ', customSource);
   customAudioSource.connect(customSource.input);
-  // console.log("custom audio source", customAudioSource);
   customAudioReady = true;
 }
 
 AFRAME.registerComponent("customise-menu-sound-source", {
   init: function() {
     this.wpVector = new THREE.Vector3();
-    var isPlaying = false;
+    var isPlayingCustom = false;
     if(customObject.geomery == 'cube') {
         this.el.setAttribute("geometry", 'primitive: box');
     } else {
         this.el.setAttribute("geometry", 'primitive: ' + customObject.geometry);
     }
     this.el.setAttribute("position", { x: 0, y: 1, z: -3.25 });
-    this.el.setAttribute("color", "#FFB6C1");
+    this.el.setAttribute("material", "color:pink");
     this.el.setAttribute("class", "cube");
     this.el.setAttribute("mixin", "cube");
+    this.el.setAttribute("shadow", "receive:true;castShadow:true");
 
-//     class="cube"
-//   mixin="cube"
     console.log('sound object', this.el);
 
     this.el.addEventListener("click", function() {
-      console.log('this element: ', this);
-      this.setAttribute("color", "pink");
+      
       if (customAudioContext) customAudioContext.resume();
 
-      if (isPlaying == false && customAudio) {
+      if (isPlayingCustom == false && customAudio) {
+        console.log(this);
+        this.setAttribute('material', "color:green");
         customAudio.play();
-        isPlaying = true;
-      } else if (isPlaying == true && customAudio) {
+        isPlayingCustom = true;
+      } else if (isPlayingCustom == true && customAudio) {
+        console.log(this);
+        this.setAttribute('material', "color:pink");
         customAudio.pause();
-        isPlaying = false;
+        isPlayingCustom = false;
       }
     });
   },
