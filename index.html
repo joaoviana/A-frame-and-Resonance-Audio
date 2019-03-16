@@ -79,15 +79,18 @@
         <!-- A-Scene START -->
 
         <a-sky id="sky" geometry="primitive: sphere" material="shader: gradient; topColor: 100 100 100; bottomColor: 100 100 200; offset: 0.0001"  position="0 0 -5"></a-sky>
-        <a-entity id="environment" environment="preset:starry; playArea:1.25; groundYScale: 50; active: false"></a-entity>
+        <a-entity id="environment" position="0 -.001 0" shadow="receive:true" environment="preset:starry; playArea:1.25; groundYScale: 50; active: false"></a-entity>
 
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false" color="black"></a-box>
         
        
         <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
-            <a-camera wasd-controls="acceleration: 50">
+            <a-entity   camera
+                        position="0 1.6 0"
+                        wasd-controls="acceleration: 50"
+                        look-controls="pointerLockEnabled: true">
                 <a-entity listener="color: #333" class="gazecaster"></a-entity>
-            </a-camera>
+            </a-entity>
             <a-entity  class="right-controller"></a-entity>
             <a-entity  class="left-controller"></a-entity>
         </a-entity>
