@@ -67,6 +67,15 @@ AFRAME.registerComponent("go-back", {
           "./src/templates/mainMenu/mainMenu.template"
         );
       } else if (this.id == "go-back-selection-menu") {
+         //hiding environment and making a-sky visible
+         let sceneEl = document.querySelector("a-scene");
+         let sky = sceneEl.querySelector("#sky");
+         let environment = sceneEl.querySelector("#environment");
+         sky.setAttribute('visible', 'true');
+         environment.setAttribute('environment','active: false');       
+         //hiding the wireframe setup
+         let wireframe = sceneEl.querySelector('#wire-frame');
+         wireframe.setAttribute('visible', 'false');
         if (defaultAudioContext || defaultScene) {
           console.log('def audio context: ', defaultAudioContext);
           console.log('def scene: ', defaultScene);
@@ -75,12 +84,6 @@ AFRAME.registerComponent("go-back", {
           defaultScene = null
           console.log('def scene after null: ', defaultScene);
           console.log('def audio context after null: ', defaultAudioContext);
-
-          //hiding environment and making a-sky visible
-          let sky = sceneEl.querySelector("#sky");
-          let environment = sceneEl.querySelector("#environment");
-          sky.setAttribute('visible', 'true');
-          environment.setAttribute('environment','active: false');
         }
         if (customAudioContext || customScene) {
           console.log('cust audio context: ', customAudioContext);

@@ -157,6 +157,10 @@ AFRAME.registerComponent("set-extra-props-button", {
       sky.setAttribute('visible', 'false');
       environment.setAttribute('environment','active: true');
       handleCustomisedSelection(customiseMenuObject);
+
+      //showing the wireframe setup
+      let wireframe = sceneEl.querySelector('#wire-frame');
+      wireframe.setAttribute('visible', 'true');
     });
   }
 });

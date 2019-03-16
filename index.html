@@ -46,10 +46,9 @@
         <!-- Asset Management START -->
         <a-assets>
             <!-- Images pre-loading -->
+            <!-- Room Materials textures -->
             <img id="foam" src="./src/assets/foam.jpg" crossorigin="anonymous">
             <img id="wood" src="./src/assets/wood.jpg" crossorigin="anonymous">
-            <!-- <img id="skyTexture" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/sechelt.jpg"> -->
-            
             <img id="glass-thin" src="./src/assets/glass-thin.jpeg" crossorigin="anonymous">
             <img id="transparent" src="./src/assets/transparent.jpeg" crossorigin="anonymous">
             <img id="marble" src="./src/assets/marble.jpg" crossorigin="anonymous">
@@ -58,7 +57,11 @@
             <img id="water-or-ice-surface" src="./src/assets/water-or-ice-surface.png" crossorigin="anonymous">
             <img id="brick-bare" src="./src/assets/brick-bare.png" crossorigin="anonymous">
             <img id="brick-painted" src="./src/assets/brick-painted.png" crossorigin="anonymous">
-            <!-- <img id="backgroundSky" crossorigin="anonymous" src="./src/assets/vaporwave-sky.gif"> -->
+
+            <!-- Mermaid Poly -->
+            <a-asset-item id="mermaid-obj" src="./src/assets/polys/mermaid/model.obj"></a-asset-item>
+            <a-asset-item id="mermaid-mtl" src="./src/assets/polys/mermaid/materials.mtl"></a-asset-item>
+
             <!-- Mixins pre-loading -->
             <a-mixin id="mycursor" position="0 0 -0.5" raycaster geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32" material="color: white; shader: flat" static-body="shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;colliderEventProperty: els;colliderEndEvent:raycaster-intersection-cleared; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
             <a-mixin id="mytouch" physics-collider phase-shift collision-filter="collisionForces: false" static-body="shape: sphere; sphereRadius: 0.02" super-hands="colliderEvent: collisions; colliderEventProperty: els; colliderEndEvent: collisions; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
@@ -77,6 +80,7 @@
         <a-entity id="environment" environment="preset:starry; playArea:1.25; groundYScale: 50; active: false"></a-entity>
 
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false" color="black"></a-box>
+        
        
         <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
             <a-camera wasd-controls="acceleration: 100">
@@ -86,9 +90,11 @@
             <a-entity  class="left-controller"></a-entity>
         </a-entity>
     
-        <a-entity rotation="-90 0 0" position="0 16.3054254257165 0" light="type:spot;intensity:1;castShadow:true"></a-entity>
-        
-        <a-entity id="room" visible="false">
+        <!-- <a-entity rotation="-90 0 0" position="0 20.3054254257165 0" light="type:spot;intensity:1;castShadow:true;"></a-entity> -->
+        <a-entity light="type: ambient; color: #CCC"></a-entity>
+        <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
+
+        <a-entity id="wire-frame" visible="false">
             <a-entity mixin="wall" position="0 5 -10"></a-entity>
             <a-entity wireframe="true"  mixin="wall" rotation="0 180 0" position="0 5 10"></a-entity>
             <a-entity wireframe="true" mixin="wall" rotation="0 90 0" position="-10 5 0"></a-entity>
