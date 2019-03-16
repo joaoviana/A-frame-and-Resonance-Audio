@@ -35,11 +35,11 @@ AFRAME.registerComponent("sound-file-selected", {
       let fileName = this.childNodes[1].components.text.attrValue.value;
       // get filename according to text box chosen
       if (fileName == "funky") {
-        customiseMenuObject.soundFile = "funky.mp3";
+        customiseMenuObject.soundFile = "funky.wav";
       } else if (fileName == "trippy") {
-        customiseMenuObject.soundFile = "trippy.mp3";
+        customiseMenuObject.soundFile = "trippy.wav";
       } else if (fileName == "spoken") {
-        customiseMenuObject.soundFile = "spoken.mp3";
+        customiseMenuObject.soundFile = "spoken.wav";
       }
       mask.setAttribute(
         "template",

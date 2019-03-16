@@ -97,11 +97,11 @@ AFRAME.registerComponent("sound-file-selected", {
       let fileName = this.childNodes[1].components.text.attrValue.value;
       // get filename according to text box chosen
       if (fileName == "funky") {
-        customiseMenuObject.soundFile = "funky.mp3";
+        customiseMenuObject.soundFile = "funky.wav";
       } else if (fileName == "trippy") {
-        customiseMenuObject.soundFile = "trippy.mp3";
+        customiseMenuObject.soundFile = "trippy.wav";
       } else if (fileName == "spoken") {
-        customiseMenuObject.soundFile = "spoken.mp3";
+        customiseMenuObject.soundFile = "spoken.wav";
       }
       let sceneEl = document.querySelector("a-scene");
       //hide submenu 2, make submenu 3 visible
@@ -159,9 +159,9 @@ AFRAME.registerComponent("register-rolloff", {
       // if (fileName == 'linear') {
       //     customiseMenuObject.soundFile = 'linear';
       // } else if (fileName == 'logarithmic') {
-      //     customiseMenuObject.soundFile = 'trippy.mp3';
+      //     customiseMenuObject.soundFile = 'trippy.wav';
       // } else if (fileName == 'none') {
-      //     customiseMenuObject.soundFile = 'spoken.mp3';
+      //     customiseMenuObject.soundFile = 'spoken.wav';
       // }
       // console.log(customiseMenuObject);
       // console.log(roomProperties);

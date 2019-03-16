@@ -20,7 +20,7 @@ function handleCustomisedSelection(customPropsObj) {
 
   //handle sound src selected, also set default
   if (!customPropsObj.soundFile) {
-    customPropsObj.soundFile = "./soundFiles/trippy.mp3";
+    customPropsObj.soundFile = "./soundFiles/trippy.wav";
   }
 
   //handle selected room properties, otherwise set those null ones to a default value, like transparent
