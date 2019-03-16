@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>***</title>
     <!-- //www.aframe-ra-mc.netlify.com -->
     <script src="./src/scripts/resonance-audio.js"></script>
     <!-- A-Frame Framework import -->
-    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
 
     <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script> 
     
     <!-- Resonance Audio SDK import -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script> -->
     <!-- A-Frame Component packages -->
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <!-- A-Frame Layout Component  -->
@@ -86,7 +85,7 @@
         
        
         <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
-            <a-camera wasd-controls="acceleration: 100">
+            <a-camera wasd-controls="acceleration: 50">
                 <a-entity listener="color: #333" class="gazecaster"></a-entity>
             </a-camera>
             <a-entity  class="right-controller"></a-entity>
