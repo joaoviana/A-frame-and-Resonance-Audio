@@ -15,7 +15,6 @@ AFRAME.registerComponent("listener", {
     if (customScene) {
       customScene.setListenerFromMatrix(this.cameraMatrix4);
     }
-
   }
 });
 

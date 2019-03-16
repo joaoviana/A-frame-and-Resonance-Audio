@@ -40,6 +40,11 @@ AFRAME.registerComponent("select-menu-box", {
         );
         //
       } else if (menuSelected == "learn") {
+        mask.setAttribute(
+          "template",
+          "src",
+          "./src/templates/learnMenu/learnMenu1.template"
+        );
         //
       }
     });

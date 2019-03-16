@@ -1,0 +1,14 @@
+// make wireframe and environment visible
+
+// have a bigger room 
+
+
+// add two audio sources(?) or 3, considering that the sphere might be needed to be an audio source to be considered for occlusion
+
+// two people objects  - the audio sources, same sound filters
+
+// room properties should be uniform, think about a cool one 
+
+// add a go back button 
+
+
