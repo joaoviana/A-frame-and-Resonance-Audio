@@ -6,6 +6,7 @@ AFRAME.registerComponent("listener", {
   init() {
     console.log('SCHEMA WORKED: ',this.data.color);
     this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
+    console.log('cameria matrix: ',this.cameraMatrix4);
   },
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
@@ -21,10 +22,10 @@ AFRAME.registerComponent("listener", {
 AFRAME.registerComponent("animate-menu-on-hover", {
   init: function() {
     this.el.addEventListener("mouseover", function(evt) {
-      this.setAttribute("material", "color", "#75818b");
+      this.object3D.scale.set(0.7, 0.7, 0.7);
     });
     this.el.addEventListener("mouseout", function(evt) {
-      this.removeAttribute("material", "color", "#75818b");
+      this.object3D.scale.set(1, 1, 1);
     });
   }
 });
@@ -32,11 +33,10 @@ AFRAME.registerComponent("animate-menu-on-hover", {
 AFRAME.registerComponent("animate-default-menu-item-on-hover", {
   init: function() {
     this.el.addEventListener("mouseover", function(evt) {
-      this.object3D.scale.set(0.7, 0.7, 0.05);
+      this.object3D.scale.set(0.9, 0.9, 0.05);
     });
     this.el.addEventListener("mouseout", function(evt) {
-      this.object3D.scale.set(0.5, 0.5, 0.03);
-      // scale=".5 .5 .03"
+      this.object3D.scale.set(0.7, 0.7, 0.03);
     });
   }
 });

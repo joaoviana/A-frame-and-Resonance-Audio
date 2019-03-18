@@ -12,30 +12,27 @@
   material="shader:flat"
   width="4"
   rotation="0 -10 0"
-  position="3 2.5 -5.9"
+  position="2 3.2 -6"
   value="Set the room properties"
   text=""
 ></a-text>
 
 <a-entity id="menu" class="menu">
-  <a-box
-    animate-menu-on-hover
+  <a-plane
     go-back
     class="menu"
     id="go-back-selection-menu"
-    material="color:pink;opacity:0.9"
+    material="color:#909aa2;opacity:1"
     width="1.7"
-    height="0.7"
+    height="0.6"
     rotation="0 -10 0"
     position="7 3.5 -6.1"
-    scale="1 1 0.05"
     geometry=""
   >
-    <a-text position="-0.6 0 1.5" value="Go back?"> </a-text>
-  </a-box>
-  <a-box
-    animate-menu-on-hover
-    material="color:white;opacity:0.9"
+    <a-text position="-0.5 0 0" value="Go back?"> </a-text>
+  </a-plane>
+  <a-plane
+    material="color:#909aa2;opacity:1"
     width="5"
     height="3"
     rotation="0 -10 0"
@@ -45,92 +42,99 @@
     class="menu"
   >
     <!-- <a-text width="2" position="-.3 .5 -3 " value="Room Material" text=""></a-text>   -->
-  </a-box>
+  </a-plane>
   <a-entity
     rotation="0 -10 0"
     position="3.4 0.7 -6"
-    layout="type: box; margin:1;columns:4"
   >
-    <a-box
+    <a-plane
+      position="-.2 1.3 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#transparent"
       class="menu"
     >
       <a-text position="-0.7 .85 .1" width="6" value="transparent"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="0.7 1.3 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#marble"
       class="menu"
     >
       <a-text position="-0.5 .85 .1" width="6" value="marble"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="1.6 1.3 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#metal"
       class="menu"
     >
       <a-text position="-0.5 .85 .1" width="6" value="metal"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="1.6 0 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#water-or-ice-surface"
       class="menu"
     >
       <a-text position="-0.7 .85 .1" width="6" value="water/ice"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="0.7 0 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#brick-bare"
       class="menu"
     >
       <a-text position="-0.7 .85 .1" width="6" value="brick-bare"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="-0.2 0 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#brick-painted"
       class="menu"
     >
       <a-text position="-0.7 .85 .1" width="6" value="brick-painted"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="2.5 1.3 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#glass-thin"
       class="menu"
     >
 
       <a-text position="-0.5 .85 .1" width="6" value="glass-thin"></a-text>
-    </a-box>
-    <a-box
+    </a-plane>
+    <a-plane
+      position="2.5 0 0.5"
       animate-default-menu-item-on-hover
       register-room-property
-      scale=".5 .5 .03"
+      scale=".7 .7 .03"
       material="shader:flat"
       src="#curtain-heavy"
       class="menu"
     >
       <a-text position="-0.7 .85 .1" width="6" value="curtain-heavy"></a-text>
-    </a-box>
+    </a-plane>
   </a-entity>
 </a-entity>

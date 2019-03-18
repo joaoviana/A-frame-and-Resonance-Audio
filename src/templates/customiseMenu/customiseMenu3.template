@@ -10,9 +10,8 @@
   ></a-text>
   <a-entity class="menu-wall-left room-props-menu">
     <a-box
-      animate-menu-on-hover
       class="menu" 
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 10 0"
       position="-1.50 2.5 -2.5"
       scale="1 1 0.05"
@@ -81,9 +80,8 @@
     class="menu-wall-front room-props-menu"
   >
     <a-box
-      animate-menu-on-hover
       clss="menu"
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 0 0"
       position="-0.1 2.5 -2.5"
       scale="1 1 0.05"
@@ -145,8 +143,7 @@
 
   <a-entity class="menu-wall-back room-props-menu" >
     <a-box
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 0 0"
       position="-0.1 1.2 -2.5"
       scale="1 1 0.05"
@@ -208,8 +205,7 @@
 
   <a-entity class="menu-wall-right room-props-menu">
     <a-box
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 -10 0"
       position="1.3 2.5 -2.5"
       scale="1 1 0.05"
@@ -272,8 +268,7 @@
 
   <a-entity class="menu-wall-floor room-props-menu">
     <a-box
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 -10 0"
       position="1.3 1.2 -2.5"
       scale="1 1 0.05"
@@ -336,8 +331,7 @@
 
   <a-entity class="menu-wall-ceiling room-props-menu">
     <a-box
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 10 0"
       position="-1.5 1.2 -2.5"
       scale="1 1 0.05"
@@ -400,7 +394,6 @@
 
   <a-box
     class="room-props-button menu"
-    animate-menu-on-hover
     set-props-button
     position="-0.1 0.3 -2.5"
     width="0.6"
@@ -411,7 +404,7 @@
     <a-text position="-.6 .1 -0.3" width="4" value="submit selection"></a-text>
   </a-box>
 
-  <a-box class="menu" animate-menu-on-hover go-back id="go-back-customise-menu-2" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-2.5 1.8 -2.5" scale="1 1 0.05" geometry=""> 
+  <a-box class="menu" go-back id="go-back-customise-menu-2" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-2.5 1.8 -2.5" scale="1 1 0.05" geometry=""> 
     <a-text position="-0.25 0 1" width="2.4" value="Go back?">  </a-text>
   </a-box>  
 </a-entity>

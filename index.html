@@ -14,6 +14,7 @@
     
     <!-- Resonance Audio SDK import -->
     <!-- A-Frame Component packages -->
+    <script src="https://unpkg.com/aframe-text-geometry-component@0.5.1/dist/aframe-text-geometry-component.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
     <!-- A-Frame Layout Component  -->
     <script src="https://unpkg.com/aframe-layout-component@4.3.1/dist/aframe-layout-component.min.js"></script>
@@ -59,6 +60,10 @@
             <img id="water-or-ice-surface" src="./src/assets/water-or-ice-surface.png" crossorigin="anonymous">
             <img id="brick-bare" src="./src/assets/brick-bare.png" crossorigin="anonymous">
             <img id="brick-painted" src="./src/assets/brick-painted.png" crossorigin="anonymous">
+            
+            <!-- FONT STYLE -->
+            <a-asset-item id="droidSans" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/droid/droid_sans_regular.typeface.json"></a-asset-item>
+            <a-asset-item id="droidSansBold" src="https://rawgit.com/mrdoob/three.js/dev/examples/fonts/droid/droid_sans_bold.typeface.json"></a-asset-item>
 
             <!-- Mermaid Poly -->
             <a-asset-item id="mermaid-obj" src="./src/assets/polys/mermaid/model.obj"></a-asset-item>
@@ -82,17 +87,17 @@
         <a-entity id="environment" position="0 -.001 0" shadow="receive:true" environment="preset:starry; playArea:1.25; groundYScale: 50; active: false"></a-entity>
 
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false" color="black"></a-box>
-        
+        <!-- progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;" -->
        
-        <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;">
-            <a-entity   camera
+        <a-entity  movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; ">
+            <a-camera
                         position="0 1.6 0"
-                        wasd-controls="acceleration: 50"
-                        look-controls="pointerLockEnabled: true">
-                <a-entity listener="color: #333" class="gazecaster"></a-entity>
-            </a-entity>
-            <a-entity  class="right-controller"></a-entity>
-            <a-entity  class="left-controller"></a-entity>
+                        look-controls="pointerLockEnabled: true"
+                        >
+                <a-entity  listener="color: #333" class="gazecaster"></a-entity>
+            </a-camera>
+            <a-entity oculus-go-controls="hand: right"></a-entity>
+            
         </a-entity>
     
         <!-- <a-entity rotation="-90 0 0" position="0 20.3054254257165 0" light="type:spot;intensity:1;castShadow:true;"></a-entity> -->

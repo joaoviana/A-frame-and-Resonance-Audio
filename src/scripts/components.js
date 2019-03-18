@@ -20,8 +20,6 @@ AFRAME.registerComponent("set-props-button", {
       }
       menuTitle.setAttribute("visible", "false");
       setPropsButton.setAttribute("visible", "false");
-
-      // console.log("room properties to send: ", roomProperties);
     });
   }
 });
@@ -83,9 +81,7 @@ AFRAME.registerComponent("object-sound-src", {
       customiseMenu1.setAttribute("visible", "false");
       customiseMenu2.setAttribute("material", "visible: true");
       customiseMenu2.setAttribute("visible", "true");
-      // console.log('here')
-      // console.log(customiseMenu1);
-      // console.log(customiseMenu2);
+
     });
   }
 });
@@ -106,14 +102,8 @@ AFRAME.registerComponent("sound-file-selected", {
       let sceneEl = document.querySelector("a-scene");
       //hide submenu 2, make submenu 3 visible
       let customiseMenu2 = sceneEl.querySelector("#customise-menu-2");
-      // let customiseMenu3 = sceneEl.querySelector('#customise-menu-3');
-      // console.log(customiseMenu3);
       customiseMenu2.setAttribute("visible", "false");
       customiseMenu2.setAttribute("material", "visible: false");
-      // console.log("already here");
-
-      // customiseMenu3.setAttribute("visible", 'true');
-      // customiseMenu3.setAttribute("material", 'visible: true');
     });
   }
 });
@@ -156,29 +146,12 @@ AFRAME.registerComponent("register-rolloff", {
       let rolloff = this.childNodes[1].components.text.attrValue.value;
       // get filename according to text box chosen
       customiseMenuObject.rolloff = rolloff;
-      // if (fileName == 'linear') {
-      //     customiseMenuObject.soundFile = 'linear';
-      // } else if (fileName == 'logarithmic') {
-      //     customiseMenuObject.soundFile = 'trippy.wav';
-      // } else if (fileName == 'none') {
-      //     customiseMenuObject.soundFile = 'spoken.wav';
-      // }
-      // console.log(customiseMenuObject);
-      // console.log(roomProperties);
       let sceneEl = document.querySelector("a-scene");
       //hide submenu 2, make submenu 3 visible
       let customiseMenu4 = sceneEl.querySelector("#customise-menu-4");
-      // let customiseMenu3 = sceneEl.querySelector('#customise-menu-3');
       customiseMenu4.setAttribute("visible", "false");
       customiseMenu4.setAttribute("material", "visible: false");
-      // customiseMenu3.setAttribute("visible", true);
     });
   }
 });
 
-// let sceneEl = document.querySelector('a-scene');
-// //hide submenu 2, make submenu 3 visible
-// let customiseMenu4 = sceneEl.querySelector('#customise-menu-4');
-// // let customiseMenu3 = sceneEl.querySelector('#customise-menu-3');
-// customiseMenu4.setAttribute("visible", false);
-// // customiseMenu3.setAttribute("visible", true);

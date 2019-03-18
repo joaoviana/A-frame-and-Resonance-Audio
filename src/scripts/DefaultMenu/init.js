@@ -28,7 +28,7 @@ function initAudioDefault() {
   //can add this into another function no?
   // Create an audio element. Feed into audio graph.
   defaultSound = document.createElement("audio");
-  defaultSound.src = "./soundFiles/funky.wav";
+  defaultSound.src = "./soundFiles/spoken.wav";
   defaultSound.crossOrigin = "anonymous";
   
   defaultSound.load();

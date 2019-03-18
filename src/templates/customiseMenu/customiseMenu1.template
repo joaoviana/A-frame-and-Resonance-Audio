@@ -13,8 +13,7 @@
       class="selection-box cube"
       id="sphere-obj"
       object-sound-src
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2; opacity:0.9"
       rotation="0 0 0"
       position="-1.8 1 -2.5"
       scale="0.5 0.5 0.5"
@@ -25,8 +24,7 @@
       class="selection-box cube"
       id="cube-obj"
       object-sound-src
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 -40 0"
       position="0 1 -2.5"
       scale="0.8 .8 .8"
@@ -37,8 +35,7 @@
       class="selection-box cube"
       id="torus-obj"
       object-sound-src
-      animate-menu-on-hover
-      material="color:white;opacity:0.9"
+      material="color:#909aa2;opacity:0.9"
       rotation="0 0 0"
       position="1.8 1 -2.5"
       scale="0.5 0.5 0.5"
@@ -46,7 +43,7 @@
     >
     </a-torus>
   </a-entity>
-  <a-box animate-menu-on-hover go-back id="go-back-selection-menu" class="cube" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-1.8 2.5 -2.5" scale="1 1 0.05" geometry=""> 
+  <a-box go-back id="go-back-selection-menu" class="cube" material="color:pink;opacity:0.9" width="0.6" height="0.2" rotation="0 5 0" position="-1.8 2.5 -2.5" scale="1 1 0.05" geometry=""> 
     <a-text position="-0.25 0 1" width="2.4" value="Go back?">  </a-text>
   </a-box>  
 </a-entity>
