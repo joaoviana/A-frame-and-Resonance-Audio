@@ -25,9 +25,9 @@ AFRAME.registerComponent("select-menu-box", {
         sky.setAttribute('visible', 'false');
         environment.setAttribute('environment','active: true');
 
-        //showing the wireframe setup
-        let wireframe = sceneEl.querySelector('#wire-frame');
-        wireframe.setAttribute('visible', 'true');
+        // //showing the wireframe setup
+        // let wireframe = sceneEl.querySelector('#wire-frame');
+        // wireframe.setAttribute('visible', 'true');
 
         //initialising the audio context
         initAudioDefault();

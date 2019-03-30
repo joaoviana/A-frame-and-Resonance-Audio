@@ -158,9 +158,9 @@ AFRAME.registerComponent("set-extra-props-button", {
       environment.setAttribute('environment','active: true');
       handleCustomisedSelection(customiseMenuObject);
 
-      //showing the wireframe setup
-      let wireframe = sceneEl.querySelector('#wire-frame');
-      wireframe.setAttribute('visible', 'true');
+      // //showing the wireframe setup
+      // let wireframe = sceneEl.querySelector('#wire-frame');
+      // wireframe.setAttribute('visible', 'true');
     });
   }
 });

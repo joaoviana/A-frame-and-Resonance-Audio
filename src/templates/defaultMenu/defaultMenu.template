@@ -1,3 +1,11 @@
+<a-entity id="wire-frame" visible="true">
+  <a-entity mixin="wall" position="0 5 -10"></a-entity>
+  <a-entity wireframe="true"  mixin="wall" rotation="0 180 0" position="0 5 10"></a-entity>
+  <a-entity wireframe="true" mixin="wall" rotation="0 90 0" position="-10 5 0"></a-entity>
+  <a-entity mixin="wall" rotation="0 -90 0" position="10 5 0"></a-entity>
+  <a-entity mixin="ground" color="green" rotation="90 0 0" position="0 10 0"></a-entity>
+</a-entity>
+
 <a-sphere
   id="sound-obj"
   sound-source

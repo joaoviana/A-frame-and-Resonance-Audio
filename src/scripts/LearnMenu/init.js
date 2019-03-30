@@ -14,9 +14,7 @@ AFRAME.registerComponent("learn-menu-selection", {
          sky.setAttribute('visible', 'false');
          environment.setAttribute('environment','active: true');
  
-         //showing the wireframe setup
-         let wireframe = sceneEl.querySelector('#wire-frame');
-         wireframe.setAttribute('visible', 'true');
+        
 
         if (menuSelected == "Localisation") {
           mask.setAttribute(
@@ -36,7 +34,7 @@ AFRAME.registerComponent("learn-menu-selection", {
               "src",
               "./src/templates/learnMenu/learnMenu-occlusion.template"
             );
-            // initOcclusionAudioContext();
+            initOcclusionAudioContext();
            //initialising the occlusion audio context
           //
         } else if (menuSelected == "Late") {

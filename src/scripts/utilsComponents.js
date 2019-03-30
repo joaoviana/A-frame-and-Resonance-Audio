@@ -4,9 +4,9 @@ AFRAME.registerComponent("listener", {
     size: {type: 'int', default: 5}
   },
   init() {
-    console.log('SCHEMA WORKED: ',this.data.color);
+    // console.log('SCHEMA WORKED: ',this.data.color);
     this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
-    console.log('cameria matrix: ',this.cameraMatrix4);
+    // console.log('cameria matrix: ',this.cameraMatrix4);
   },
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
@@ -15,6 +15,9 @@ AFRAME.registerComponent("listener", {
     }
     if (customScene) {
       customScene.setListenerFromMatrix(this.cameraMatrix4);
+    }
+    if (occlusionScene) {
+      occlusionScene.setListenerFromMatrix(this.cameraMatrix4);
     }
   }
 });
@@ -105,8 +108,8 @@ AFRAME.registerComponent("go-back", {
          sky.setAttribute('visible', 'true');
          environment.setAttribute('environment','active: false');       
          //hiding the wireframe setup
-         let wireframe = sceneEl.querySelector('#wire-frame');
-         wireframe.setAttribute('visible', 'false');
+        //  let wireframe = sceneEl.querySelector('#wire-frame');
+        //  wireframe.setAttribute('visible', 'false');
         if (defaultAudioContext || defaultScene) {
           defaultSoundSource.disconnect(defaultSource.input);
           defaultAudioContext = null;
@@ -116,6 +119,13 @@ AFRAME.registerComponent("go-back", {
           customAudioSource.disconnect(customSource.input);
           customAudioContext = null;
           customScene = null
+        }
+        if (occlusionAudioContext || occlusionScene) {
+          humanSoundSource.disconnect(occlusionSource1.input);
+          human2SoundSource.disconnect(occlusionSource2.input);
+          sineSoundSource.disconnect(occlusionSource3.input);
+          occlusionAudioContext = null;
+          occlusionScene = null;
         }
         mask.setAttribute(
           "template",
