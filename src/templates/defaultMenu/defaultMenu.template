@@ -1,6 +1,6 @@
 <a-sphere
   id="sound-obj"
-  default-menu-sound-source
+  sound-source
   class="cube"
   mixin="cube"
   position="0 1 -3.25"

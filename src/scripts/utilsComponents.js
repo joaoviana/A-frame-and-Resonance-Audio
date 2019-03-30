@@ -19,6 +19,38 @@ AFRAME.registerComponent("listener", {
   }
 });
 
+AFRAME.registerComponent("sound-source", {
+  init: function() {
+    this.wpVector = new THREE.Vector3();
+    var isPlaying = false;
+    
+    this.el.addEventListener("click", function() {
+      
+      if (defaultAudioContext) defaultAudioContext.resume();
+
+      if (isPlaying == false && defaultSound) {
+        this.setAttribute("color", "green");
+        defaultSound.play();
+        isPlaying = true;
+      } else if (isPlaying == true && defaultSound) {
+        this.setAttribute("color", "pink");
+        defaultSound.pause();
+        isPlaying = false;
+      }
+    });
+  },
+
+  tick: function() {
+    if (defaultSource) {
+      defaultSource.setPosition(
+        this.el.object3D.getWorldPosition(this.wpVector).x,
+        this.el.object3D.getWorldPosition(this.wpVector).y,
+        this.el.object3D.getWorldPosition(this.wpVector).z
+      );
+    }
+  }
+});
+
 AFRAME.registerComponent("animate-menu-on-hover", {
   init: function() {
     this.el.addEventListener("mouseover", function(evt) {
@@ -76,22 +108,14 @@ AFRAME.registerComponent("go-back", {
          let wireframe = sceneEl.querySelector('#wire-frame');
          wireframe.setAttribute('visible', 'false');
         if (defaultAudioContext || defaultScene) {
-          console.log('def audio context: ', defaultAudioContext);
-          console.log('def scene: ', defaultScene);
           defaultSoundSource.disconnect(defaultSource.input);
           defaultAudioContext = null;
-          defaultScene = null
-          console.log('def scene after null: ', defaultScene);
-          console.log('def audio context after null: ', defaultAudioContext);
+          defaultScene = null;
         }
         if (customAudioContext || customScene) {
-          console.log('cust audio context: ', customAudioContext);
-          console.log('cust scene: ', customScene);
           customAudioSource.disconnect(customSource.input);
           customAudioContext = null;
           customScene = null
-          console.log('cust scene after null: ', customScene);
-          console.log('cust audio context after null: ', customAudioContext);
         }
         mask.setAttribute(
           "template",

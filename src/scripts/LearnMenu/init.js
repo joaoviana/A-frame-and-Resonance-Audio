@@ -8,8 +8,6 @@ AFRAME.registerComponent("learn-menu-selection", {
         //Get text value from menu selected from the learn menu
         let menuSelected = this.childNodes[1].components.text.attrValue.value;
 
-        console.log('HEY')
-
          //hiding a-sky and making environment visible
          let sky = sceneEl.querySelector("#sky");
          let environment = sceneEl.querySelector("#environment");
@@ -32,12 +30,13 @@ AFRAME.registerComponent("learn-menu-selection", {
           
           
         } else if (menuSelected == "Occlusion") {
-            console.log('INSIDE OCCLUSION')
-          mask.setAttribute(
-            "template",
-            "src",
-            "./src/templates/learnMenu/learnMenu-occlusion.template"
-          );
+            console.log('INSIDE OCCLUSION');
+            mask.setAttribute(
+              "template",
+              "src",
+              "./src/templates/learnMenu/learnMenu-occlusion.template"
+            );
+            // initOcclusionAudioContext();
            //initialising the occlusion audio context
           //
         } else if (menuSelected == "Late") {

@@ -61,35 +61,3 @@ AFRAME.registerComponent("register-room-property", {
     });
   }
 });
-
-AFRAME.registerComponent("default-menu-sound-source", {
-  init: function() {
-    this.wpVector = new THREE.Vector3();
-    var isPlaying = false;
-    
-    this.el.addEventListener("click", function() {
-      
-      if (defaultAudioContext) defaultAudioContext.resume();
-
-      if (isPlaying == false && defaultSound) {
-        this.setAttribute("color", "green");
-        defaultSound.play();
-        isPlaying = true;
-      } else if (isPlaying == true && defaultSound) {
-        this.setAttribute("color", "pink");
-        defaultSound.pause();
-        isPlaying = false;
-      }
-    });
-  },
-
-  tick: function() {
-    if (defaultSource) {
-      defaultSource.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
-    }
-  }
-});

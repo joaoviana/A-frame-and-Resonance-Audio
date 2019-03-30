@@ -11,4 +11,31 @@
 
 // add a go back button 
 
+<a-entity id="wire-frame-occlusion" visible="false">
+    <a-entity mixin="wall-occlusion" position="30 10 -50"></a-entity>
+    <a-entity wireframe="true"  mixin="wall-occlusion" rotation="0 180 0" position="30 10 50"></a-entity>
+    <a-entity wireframe="true" mixin="wall-occlusion" rotation="0 90 0" position="-50 10 30"></a-entity>
+    <a-entity mixin="wall-occlusion" rotation="0 -90 0" position="50 10 30"></a-entity>
+    <a-entity mixin="ground-occlusion" material="color: green" rotation="90 0 0" position="0 10 0"></a-entity>
+</a-entity>
 
+
+<a-sphere
+  id="sound-obj"
+  sound-source
+  class="cube"
+  mixin="cube"
+  position="0 1 -3.25"
+  radius="0.75"
+  material="color:#FFB6C1"
+></a-sphere>
+
+<a-sphere
+  id="sound-obj"
+  sound-source
+  class="cube"
+  mixin="cube"
+  position="0 1 -3.25"
+  radius="0.75"
+  material="color:#FFB6C1"
+></a-sphere>
