@@ -50,7 +50,8 @@ AFRAME.registerComponent("learn-menu-selection", {
           // sceneEl.setAttribute('fog','type: exponential');
           // sceneEl.setAttribute('fog','density: 0.15');
           // sceneEl.setAttribute('fog','color: #111');
-          initLateReflectionsAudioContext();
+          initSceneAudioContext();
+          // initCaveAudioContext();
           mask.setAttribute(
             "template",
             "src",
