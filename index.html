@@ -41,6 +41,7 @@
     <script src="./src/scripts/CustomiseMenu/customisedScene.js"></script>
 
     <script src="./src/scripts/LearnMenu/occlusion.js"></script>
+    <script src="./src/scripts/LearnMenu/lateReflections.js"></script>
     <script src="./src/scripts/LearnMenu/init.js"></script>
 
 </head>
@@ -73,6 +74,10 @@
             <a-asset-item id="human-obj" src="./src/assets/polys/human/model.obj"></a-asset-item>
             <a-asset-item id="human-mtl" src="./src/assets/polys/human/materials.mtl"></a-asset-item>
 
+            <!-- Cave Poly -->
+            <a-asset-item id="cave-obj" src="./src/assets/polys/cave/model.obj"></a-asset-item>
+            <a-asset-item id="cave-mtl" src="./src/assets/polys/cave/materials.mtl"></a-asset-item>
+
             <!-- Mixins pre-loading -->
             <a-mixin id="mycursor" position="0 0 -0.5" raycaster geometry="primitive: ring; radiusOuter: 0.008; radiusInner: 0.005; segmentsTheta: 32" material="color: white; shader: flat" static-body="shape: sphere; sphereRadius: 0.001" super-hands="colliderEvent: raycaster-intersection;colliderEventProperty: els;colliderEndEvent:raycaster-intersection-cleared; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
             <a-mixin id="mytouch" physics-collider phase-shift collision-filter="collisionForces: false" static-body="shape: sphere; sphereRadius: 0.02" super-hands="colliderEvent: collisions; colliderEventProperty: els; colliderEndEvent: collisions; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
@@ -98,10 +103,11 @@
         <a-box position="0 .05 0" static-body width=100 height=0.001 depth=100 visible="false" color="black"></a-box>
         <!-- progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; override: true; objects: .cube, .menu ; maxLevel: point;" -->
        
-        <a-entity movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; ">
+        <a-entity id="camera-wrapper" movement-controls="fly: false" progressive-controls="gazeMixin: mycursor; touchMixin: mytouch; ">
             <a-entity   camera
-                        position="0 1.6 0"
+                        position="0 1.6 0"  
                         look-controls="pointerLockEnabled: true"
+                        
                         >
                 <a-entity  listener class="gazecaster"></a-entity>
             </a-entity>
@@ -110,8 +116,8 @@
         </a-entity>
     
         <!-- <a-entity rotation="-90 0 0" position="0 20.3054254257165 0" light="type:spot;intensity:1;castShadow:true;"></a-entity> -->
-        <a-entity light="type: ambient; color: #CCC"></a-entity>
-        <a-entity light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
+        <a-entity id="ambient-light" light="type: ambient; color: #CCC"></a-entity>
+        <a-entity id="directional-light" light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
 
         
        <!-- A-Scene END -->

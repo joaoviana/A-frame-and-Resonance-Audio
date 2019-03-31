@@ -37,9 +37,7 @@ function initAudioDefault() {
 
   // Create a Source, connect desired audio input to it.
   defaultSource = defaultScene.createSource();
-  // console.log(defaultSource);
   defaultSource.setGain(0.9);
-  // console.log(defaultSource);
   defaultSoundSource.connect(defaultSource.input);
   audioReady = true;
 

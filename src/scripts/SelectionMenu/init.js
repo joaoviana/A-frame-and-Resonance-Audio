@@ -3,14 +3,7 @@ AFRAME.registerComponent("select-menu-box", {
     this.el.addEventListener("click", function(evt) {
       let sceneEl = document.querySelector("a-scene");
       let mask = sceneEl.querySelector("#mask");
-      // let selectionMenu = sceneEl.querySelector('#selection-menu');
-      // let defaultMenu = sceneEl.querySelector('#default-menu');
-      // let customiseMenu = sceneEl.querySelector('#customise-menu');
-      // let learnMenu = sceneEl.querySelector('#learn-menu');
       let menuSelected = this.childNodes[1].components.text.attrValue.value;
-
-      //hide selectionMenu
-      // selectionMenu.setAttribute("visible", 'false');
 
       //set attribute visible to default-menu customise-menu and learn-menu
       if (menuSelected == "default") {
@@ -24,10 +17,6 @@ AFRAME.registerComponent("select-menu-box", {
         let environment = sceneEl.querySelector("#environment");
         sky.setAttribute('visible', 'false');
         environment.setAttribute('environment','active: true');
-
-        // //showing the wireframe setup
-        // let wireframe = sceneEl.querySelector('#wire-frame');
-        // wireframe.setAttribute('visible', 'true');
 
         //initialising the audio context
         initAudioDefault();
