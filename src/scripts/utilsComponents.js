@@ -16,15 +16,15 @@ AFRAME.registerComponent("listener", {
     if (customScene) {
       customScene.setListenerFromMatrix(this.cameraMatrix4);
     }
-    if (occlusionScene) {
-      occlusionScene.setListenerFromMatrix(this.cameraMatrix4);
-    }
-    if (mainScene) {
-      mainScene.setListenerFromMatrix(this.cameraMatrix4);
-    }
-    // if (caveScene) {
-    //   caveScene.setListenerFromMatrix(this.cameraMatrix4);
+    // if (occlusionScene) {
+    //   occlusionScene.setListenerFromMatrix(this.cameraMatrix4);
     // }
+    // if (mainScene) {
+    //   mainScene.setListenerFromMatrix(this.cameraMatrix4);
+    // }
+    if (caveScene) {
+      caveScene.setListenerFromMatrix(this.cameraMatrix4);
+    }
   }
 });
 

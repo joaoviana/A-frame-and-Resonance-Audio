@@ -47,16 +47,17 @@ AFRAME.registerComponent("learn-menu-selection", {
           environment.setAttribute('environment', 'fog: 0.5');
           environment.setAttribute('environment', 'dressing: trees');
           environment.setAttribute('environment', 'dressingAmount: 20');
-          // sceneEl.setAttribute('fog','type: exponential');
-          // sceneEl.setAttribute('fog','density: 0.15');
-          // sceneEl.setAttribute('fog','color: #111');
-          initSceneAudioContext();
-          // initCaveAudioContext();
+          sceneEl.setAttribute('fog','type: exponential');
+          sceneEl.setAttribute('fog','density: 0.15');
+          sceneEl.setAttribute('fog','color: #111');
+          // initSceneAudioContext();
+         
           mask.setAttribute(
             "template",
             "src",
             "./src/templates/learnMenu/learnMenu-lateReflections.template"
           );
+          initCaveAudioContext();
           //
            //initialising the late reflections audio context
         }

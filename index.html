@@ -8,7 +8,8 @@
     <!-- //www.aframe-ra-mc.netlify.com -->
     <script src="./src/scripts/resonance-audio.js"></script>
     <!-- A-Frame Framework import -->
-    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+    <!-- <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script> -->
+    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script> 
 
     <script src="https://cdn.rawgit.com/zcanter/aframe-gradient-sky/master/dist/gradientsky.min.js"></script> 
     
@@ -20,6 +21,7 @@
     <script src="https://unpkg.com/aframe-layout-component@4.3.1/dist/aframe-layout-component.min.js"></script>
     <!-- A-Frame Super Hands Component -->
     <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <!-- <script src="https://unpkg.com/super-hands@2.0.0/dist/super-hands.min.js"></script> -->
     <!-- A-Frame Physics system for A-Frame VR -->
     <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v3.3.0/dist/aframe-physics-system.min.js"></script>
     <script src="https://unpkg.com/aframe-template-component@^3.1.1/dist/aframe-template-component.min.js"></script> 
@@ -83,6 +85,7 @@
             <a-mixin id="mytouch" physics-collider phase-shift collision-filter="collisionForces: false" static-body="shape: sphere; sphereRadius: 0.02" super-hands="colliderEvent: collisions; colliderEventProperty: els; colliderEndEvent: collisions; colliderEndEventProperty: clearedEls;colliderState:"></a-mixin>
             <a-mixin id="cube" dynamic-body="angularDamping:.5;linearDamping:.15" hoverable grabbable stretchable draggable shadow="receive:true;castShadow:true"></a-mixin>
             <a-mixin id="occlusion-object" dynamic-body="angularDamping:.5;linearDamping:.15" hoverable shadow="receive:true;castShadow:true"></a-mixin>
+            <a-mixin id="late-reflections-object" shadow="receive:true;castShadow:true"></a-mixin>
             <a-mixin id="menu" dynamic-body hoverable grabbable stretchable draggable ></a-mixin>
             <a-mixin id="wall" static-body geometry="primitive: plane; height: 10; width: 20;" material="wireframe: true;shader: flat;color: #42b9f4"></a-mixin>
             <a-mixin id="ground" shadow="receive:false;cast:false;" material="wireframe: true;shader:flat;color:#42b9f4" static-body geometry="primitive: plane; height: 20; width: 20" ></a-mixin>
@@ -90,8 +93,6 @@
                 <!-- mixin for occlusion -->
                 <a-mixin id="wall-occlusion" static-body geometry="primitive: plane; height: 20; width: 50;" material="wireframe: true;shader: flat;color: #42b9f4"></a-mixin>
                 <a-mixin id="ground-occlusion" shadow="receive:false;cast:false;" material="wireframe: true;shader:flat;color:#42b9f4" static-body geometry="primitive: plane; height: 50; width: 50" ></a-mixin>
-
-
         </a-assets>
         <!-- Asset Management END -->
         

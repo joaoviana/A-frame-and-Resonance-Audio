@@ -1,4 +1,4 @@
-<a-entity id="wire-frame-occlusion" visible="true" storm-sound-source>
+<a-entity id="wire-frame-occlusion" visible="true">
     <a-entity mixin="wall-occlusion" position="0 10 0"></a-entity>
     <a-entity
       mixin="wall-occlusion"
@@ -22,26 +22,35 @@
       rotation="90 0 0"
       position="0 20 -25"
     ></a-entity>
-</a-entity>
-
-<a-obj-model
+  </a-entity>
+<!-- <a-obj-model
 mermaid-sound-source
 src="#mermaid-obj"
 mtl="#mermaid-mtl"
 position="25 2.5 -30" rotation="0 135 0" scale="3 3 3"
-></a-obj-model>
-<a-obj-model
-mermaid-cave-sound-source
-src="#mermaid-obj"
-mtl="#mermaid-mtl"
-position="25 2.5 -30" rotation="0 135 0" scale="3 3 3"
-></a-obj-model>
+></a-obj-model> -->
 
-<a-obj-model
-src="#cave-obj"
-mtl="#cave-mtl"
-position="0 1 -30" rotation="0 130 0" scale="12 12 12"
-></a-obj-model>
+<a-entity 
+mixin="late-reflections-object"
+position="9.5 2.5 -40"  rotation="0 180 0" scale="3 3 3"  mermaid-cave-sound-source>
+  <a-obj-model
+
+  src="#mermaid-obj"
+  mtl="#mermaid-mtl"
+  ></a-obj-model>
+
+</a-entity>
+
+
+<a-entity  storm-sound-source mixin="late-reflections-object" position="0 1 0" rotation="0 180 0" scale="1 1 0.7">
+
+    <a-obj-model
+    src="#cave-obj"
+    
+    mtl="#cave-mtl"
+  
+    ></a-obj-model>
+</a-entity>
   
 <a-plane
 go-back
