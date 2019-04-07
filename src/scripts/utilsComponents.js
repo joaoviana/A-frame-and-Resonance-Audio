@@ -1,3 +1,5 @@
+var cameraPosition;
+
 AFRAME.registerComponent("listener", {
   schema: {
     color: {default: '#FFF'},
@@ -10,7 +12,15 @@ AFRAME.registerComponent("listener", {
   },
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
+
+    
     if (defaultScene)  {
+      // defaultScene.setListenerFromMatrix(
+      //   new THREE.Matrix4().multiplyMatrices(
+      //     new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+      //     this.el.sceneEl.camera.el.object3D.matrixWorld
+      //   )
+      // )
       defaultScene.setListenerFromMatrix(this.cameraMatrix4);
     }
     if (customScene) {
@@ -23,7 +33,13 @@ AFRAME.registerComponent("listener", {
     //   mainScene.setListenerFromMatrix(this.cameraMatrix4);
     // }
     if (caveScene) {
-      caveScene.setListenerFromMatrix(this.cameraMatrix4);
+      caveScene.setListenerFromMatrix(
+      new THREE.Matrix4().multiplyMatrices(
+        new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+        this.el.sceneEl.camera.el.object3D.matrixWorld
+      )
+    )
+      // caveScene.setListenerFromMatrix(this.cameraMatrix4);
     }
   }
 });
@@ -50,14 +66,63 @@ AFRAME.registerComponent("sound-source", {
   },
 
   tick: function() {
+    // console.log('get world position', this.el.object3D.getWorldPosition(this.wpVector).x + this.el.sceneEl.camera.el.object3D.matrixWorld.x)
+    //needs to be relative to camera, so i need to get the cameras position and rotation to 
     if (defaultSource) {
+      var cameraEl = this.el.sceneEl.camera.el;
+      var rotation = cameraEl.getAttribute('rotation');
       defaultSource.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
+        rotation.x,
+        rotation.y,
+        rotation.z,
+      )
+      // console.log('camera? ', this.el.sceneEl.camera.el.object3D.matrixWorld)
+      // defaultSource.setPosition(new THREE.Matrix4().multiplyMatrices(
+      //   new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+      //   this.el.sceneEl.camera.el.object3D.matrixWorld
+      // ))
+      defaultSource.setPosition(
+        this.el.object3D.getWorldPosition(this.wpVector).x - cameraPosition.x,
+        this.el.object3D.getWorldPosition(this.wpVector).y - cameraPosition.y,
+        this.el.object3D.getWorldPosition(this.wpVector).z - cameraPosition.z
       );
     }
   }
+});
+
+AFRAME.registerComponent('camera-logger', {
+
+  schema: {
+    timestamp: {type: 'int'},
+    seconds: {type: 'int'} // default 0
+  },
+
+  log : function () {
+    var cameraEl = this.el.sceneEl.camera.el;
+    var rotation = cameraEl.getAttribute('rotation');
+    var worldPos = new THREE.Vector3();
+    // console.log('camera? ', this.el.sceneEl.camera.el.object3D.matrixWorld)
+    worldPos.setFromMatrixPosition(cameraEl.object3D.matrixWorld);
+    // console.log("Time: " + this.data.seconds 
+    //             + "; Camera Position: (" + worldPos.x.toFixed(2) + ", " + worldPos.y.toFixed(2) + ", " + worldPos.z.toFixed(2) 
+    //             + "); Camera Rotation: (" + rotation.x.toFixed(2) + ", " + rotation.y.toFixed(2) + ", " + rotation.z.toFixed(2) + ")");        
+    return worldPos;
+              },
+
+  play: function () {
+    this.data.timestamp = Date.now();
+    this.log();
+  },
+
+  tick: function () {  
+    if (Date.now() - this.data.timestamp > 1000) {
+      this.data.timestamp += 1000;
+      this.data.seconds += 1;
+      cameraPosition = this.log();
+    }
+    // cameraPosition = this.worldPos;
+    // console.log('VARIABLE', cameraPosition);
+  },
 });
 
 AFRAME.registerComponent("animate-menu-on-hover", {

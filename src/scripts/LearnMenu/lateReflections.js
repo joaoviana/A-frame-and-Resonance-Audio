@@ -126,4 +126,5 @@ AFRAME.registerComponent("mermaid-cave-sound-source", {
 
 //approximately: 25/latereflections durations 
 //get individual velocity values and display them
+// if radius is bigger than 25, start all over again x
     //mermaid sound source late reflections: [3.4713995456695557, 3.628162384033203, 3.4498541355133057, 10.031046867370605, 16.801977157592773, 16.65700912475586, 9.47618293762207, 5.426042079925537, 1.875927209854126]
