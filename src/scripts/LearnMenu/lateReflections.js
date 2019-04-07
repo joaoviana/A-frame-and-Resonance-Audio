@@ -22,56 +22,6 @@ let mermaidSoundSource;
 let stormSound;
 let stormSoundSource;
 
-// function initSceneAudioContext() {
-
-//     // Set room acoustics properties.
-//   let mainAudioDimensions = {
-//     width: 50,
-//     height: 40,
-//     depth: 50
-//   };
-
-//   let mainMaterial = setAllRoomProperties("transparent");
-
-//   mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-
-//   // Create a (1st-order Ambisonic) ResonanceAudio scene.
-//   mainScene = new ResonanceAudio(mainAudioContext);
-
-//   // Send scene's rendered binaural output to stereo out.
-//   mainScene.output.connect(mainAudioContext.destination);
-
-//   mainScene.setRoomProperties(mainAudioDimensions, mainMaterial);
-
-//   //mermaid sound source
-//   // Create an audio element. Feed into audio graph.
-//   mermaidSound = document.createElement("audio");
-//   mermaidSound.src = "./soundFiles/mermaidsound.wav";
-//   mermaidSound.crossOrigin = "anonymous";
-//   mermaidSound.load();
-//   mermaidSoundSource = mainAudioContext.createMediaElementSource(mermaidSound);
-
-//   // storm sea sound
-//   // Create an audio element. Feed into audio graph.
-//   stormSound = document.createElement("audio");
-//   stormSound.src = "./soundFiles/stormysea.wav";
-//   stormSound.crossOrigin = "anonymous";
-//   stormSound.load();
-//   stormSoundSource = mainAudioContext.createMediaElementSource(stormSound);
-
-//   // Create a Source, connect desired audio input to it.
-//   lateSource1 = mainScene.createSource();
-//   lateSource1.setGain(0.5);
-//   stormSoundSource.connect(lateSource1.input);
-
-//   lateSource2 = mainScene.createSource();
-//   lateSource2.setGain(1);
-//   mermaidSoundSource.connect(lateSource2.input);
-
-//   audioLateReady = true;
-//   initCaveAudioContext();
-// }
-
 function initCaveAudioContext() {
      // Set room acoustics properties.
   let caveAudioDimensions = {
@@ -100,10 +50,14 @@ function initCaveAudioContext() {
   mermaidCaveSound.crossOrigin = "anonymous";
   mermaidCaveSound.load();
   mermaidCaveSoundSource = caveAudioContext.createMediaElementSource(mermaidCaveSound);
+  console.log('sound: ', mermaidCaveSound)
+  console.log('sound source: ', mermaidCaveSoundSource)
+  //mermaid sound source late reflections: [3.4713995456695557, 3.628162384033203, 3.4498541355133057, 10.031046867370605, 16.801977157592773, 16.65700912475586, 9.47618293762207, 5.426042079925537, 1.875927209854126]
 
   caveSource = caveScene.createSource();
   caveSource.setGain(1.3);
   mermaidCaveSoundSource.connect(caveSource.input);
+  console.log('ra source: ', caveSource)
 
    // storm sea sound
   // Create an audio element. Feed into audio graph.
@@ -156,3 +110,20 @@ AFRAME.registerComponent("mermaid-cave-sound-source", {
       }
     }
   });
+
+  AFRAME.registerComponent("late-reflection-1", {
+    init: function() {
+      let sceneEl = document.querySelector("a-scene");
+      this.torus = sceneEl.querySelector("#lr1");
+      this.i = 0.1;
+    },
+  
+    tick: function() {
+      this.torus.setAttribute('radius', 1 + this.i);
+      this.i += 0.1;
+    }
+  });
+
+//approximately: 25/latereflections durations 
+//get individual velocity values and display them
+    //mermaid sound source late reflections: [3.4713995456695557, 3.628162384033203, 3.4498541355133057, 10.031046867370605, 16.801977157592773, 16.65700912475586, 9.47618293762207, 5.426042079925537, 1.875927209854126]

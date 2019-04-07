@@ -3292,6 +3292,7 @@ function LateReflections(context, options) {
 
   // Compute IR using RT60 values.
   this.setDurations(options.durations);
+  console.log('from set: ', options.durations);
 }
 
 
@@ -3312,7 +3313,7 @@ LateReflections.prototype.setDurations = function(durations) {
   let durationsSamples =
     new Float32Array(Utils.NUMBER_REVERB_FREQUENCY_BANDS);
     let sampleRate = this._context.sampleRate;
-  // console.log('durations samples: ', durationsSamples);
+  console.log('durations samples: ', durationsSamples);
 
   for (let i = 0; i < durations.length; i++) {
     // Clamp within suitable range.

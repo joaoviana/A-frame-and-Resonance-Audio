@@ -30,6 +30,8 @@ mtl="#mermaid-mtl"
 position="25 2.5 -30" rotation="0 135 0" scale="3 3 3"
 ></a-obj-model> -->
 
+<a-torus id="lr1" late-reflection-1 color="#ffffff" arc="0" rotation="90 90 0" radius="1" radius-tubular="0.1" position="9.5 0.4 -40"></a-torus>
+
 <a-entity 
 mixin="late-reflections-object"
 position="9.5 2.5 -40"  rotation="0 180 0" scale="3 3 3"  mermaid-cave-sound-source>
