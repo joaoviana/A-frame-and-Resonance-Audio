@@ -80,7 +80,7 @@ function initAudioCustomised(customPropsObj) {
 
   //instantiate audio context and RA
   customAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-  console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', customAudioContext);
+  // console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', customAudioContext);
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
   customScene = new ResonanceAudio(customAudioContext);
   // console.log('SCENE IN CUSTOMISED SCENE', scene);
@@ -94,7 +94,7 @@ function initAudioCustomised(customPropsObj) {
   // Set speed of sound
   customScene.setSpeedOfSound(customPropsObj.speedOfSound);
 
-  console.log('SCENE AFTER BEING SET NEW PROPS: ', customScene);
+  // console.log('SCENE AFTER BEING SET NEW PROPS: ', customScene);
 
   //set up the audio source
 
@@ -105,15 +105,15 @@ function initAudioCustomised(customPropsObj) {
   customAudio.src = "./soundFiles/" + customPropsObj.soundFile;
   customAudio.crossOrigin = "anonymous";
   customAudio.load();
-  console.log('custom Audio: ', customAudio);
+  // console.log('custom Audio: ', customAudio);
   customAudioSource = customAudioContext.createMediaElementSource(customAudio);
 
   // Create a Source, connect desired audio input to it.
   customSource = customScene.createSource();
-  console.log('SOURCE BEFORE SET PROPS', customSource);
+  // console.log('SOURCE BEFORE SET PROPS', customSource);
   customSource.setGain(customPropsObj.gain);
   customSource.setRolloff(customPropsObj.rolloff);
-  console.log('SOURCE AFTER PROPS LOL: ', customSource);
+  // console.log('SOURCE AFTER PROPS LOL: ', customSource);
   customAudioSource.connect(customSource.input);
   customAudioReady = true;
 }
@@ -132,20 +132,15 @@ AFRAME.registerComponent("customise-menu-sound-source", {
     this.el.setAttribute("class", "cube");
     this.el.setAttribute("mixin", "cube");
     this.el.setAttribute("shadow", "receive:true;castShadow:true");
-
-    console.log('sound object', this.el);
-
     this.el.addEventListener("click", function() {
       
       if (customAudioContext) customAudioContext.resume();
 
       if (isPlayingCustom == false && customAudio) {
-        console.log(this);
         this.setAttribute('material', "color:green");
         customAudio.play();
         isPlayingCustom = true;
       } else if (isPlayingCustom == true && customAudio) {
-        console.log(this);
         this.setAttribute('material', "color:pink");
         customAudio.pause();
         isPlayingCustom = false;
@@ -153,12 +148,12 @@ AFRAME.registerComponent("customise-menu-sound-source", {
     });
   },
   tick: function() {
+    var cameraEl = this.el.sceneEl.camera.el;
     if (customSource) {
-      customSource.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
+      customSource.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+        new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+        cameraEl.object3D.matrixWorld)
+    ));
     }
   }
 });

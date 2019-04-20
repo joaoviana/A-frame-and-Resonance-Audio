@@ -68,40 +68,22 @@ function initOcclusionAudioContext() {
   sineSoundSource.connect(occlusionSource3.input);
 
   audioReadyOcclusion = true;
-
-  // console.log('occlusion source: ', occlusionSource);
-  console.log('occlusion scene: ', occlusionScene);
-  console.log('occlusion audio context: ', occlusionAudioContext);
 }
 
 AFRAME.registerComponent("occlusion-sound-source-1", {
   init: function() {
     this.wpVector = new THREE.Vector3();
-    var isPlaying = false;
-    // if (occlusionAudioContext) occlusionAudioContext.resume();
     humanSound.setAttribute('loop', true);
     humanSound.play();
-    
-    // this.el.addEventListener("click", function() {
-      
-      // if (isPlaying == false && humanSound) {
-      //   this.setAttribute("color", "green");
-      //   isPlaying = true;
-      // } else if (isPlaying == true && humanSound) {
-      //   this.setAttribute("color", "pink");
-      //   humanSound.pause();
-      //   isPlaying = false;
-      // }
-    // });
   },
 
   tick: function() {
+    var cameraEl = this.el.sceneEl.camera.el;
     if (occlusionSource1) {
-      occlusionSource1.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
+      occlusionSource1.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          cameraEl.object3D.matrixWorld)
+          ));
     }
   }
 });
@@ -110,31 +92,17 @@ AFRAME.registerComponent("occlusion-sound-source-2", {
   init: function() {
     this.wpVector = new THREE.Vector3();
     var isPlaying = false;
-    // if (occlusionAudioContext) occlusionAudioContext.resume();
     human2Sound.setAttribute('loop', true);
     human2Sound.play();
-    
-    // this.el.addEventListener("click", function() {
-      
-
-      // if (isPlaying == false && human2Sound) {
-      //   this.setAttribute("color", "green");
-      //   isPlaying = true;
-      // } else if (isPlaying == true && human2Sound) {
-      //   this.setAttribute("color", "pink");
-      //   human2Sound.pause();
-      //   isPlaying = false;
-      // }
-    // });
   },
 
   tick: function() {
+    var cameraEl = this.el.sceneEl.camera.el;
     if (occlusionSource2) {
-      occlusionSource2.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
+      occlusionSource2.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          cameraEl.object3D.matrixWorld)
+          ));
     }
   }
 });
@@ -142,32 +110,17 @@ AFRAME.registerComponent("occlusion-sound-source-2", {
 AFRAME.registerComponent("occlusion-sound-source-3", {
   init: function() {
     this.wpVector = new THREE.Vector3();
-    var isPlaying = false;
-    
-    // if (occlusionAudioContext) occlusionAudioContext.resume();
     sineSound.setAttribute('loop', true);
     sineSound.play();
-    // this.el.addEventListener("click", function() {
-      
-
-    //   if (isPlaying == false && sineSound) {
-    //     this.setAttribute("color", "green");
-    //     isPlaying = true;
-    //   } else if (isPlaying == true && sineSound) {
-    //     this.setAttribute("color", "pink");
-    //     sineSound.pause();
-    //     isPlaying = false;
-    //   }
-    // });
   },
 
   tick: function() {
+    var cameraEl = this.el.sceneEl.camera.el;
     if (occlusionSource3) {
-      occlusionSource3.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
+      occlusionSource3.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          cameraEl.object3D.matrixWorld)
+          ));
     }
   }
 });

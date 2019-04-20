@@ -15,16 +15,22 @@ AFRAME.registerComponent("listener", {
 
     
     if (defaultScene)  {
-      // defaultScene.setListenerFromMatrix(
-      //   new THREE.Matrix4().multiplyMatrices(
-      //     new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
-      //     this.el.sceneEl.camera.el.object3D.matrixWorld
-      //   )
-      // )
-      defaultScene.setListenerFromMatrix(this.cameraMatrix4);
+      defaultScene.setListenerFromMatrix(
+        new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          this.el.sceneEl.camera.el.object3D.matrixWorld
+        )
+      )
+      // defaultScene.setListenerFromMatrix(this.cameraMatrix4);
     }
     if (customScene) {
-      customScene.setListenerFromMatrix(this.cameraMatrix4);
+      // customScene.setListenerFromMatrix(this.cameraMatrix4);
+      customScene.setListenerFromMatrix(
+        new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          this.el.sceneEl.camera.el.object3D.matrixWorld
+        )
+      )
     }
     // if (occlusionScene) {
     //   occlusionScene.setListenerFromMatrix(this.cameraMatrix4);
@@ -33,12 +39,18 @@ AFRAME.registerComponent("listener", {
     //   mainScene.setListenerFromMatrix(this.cameraMatrix4);
     // }
     if (caveScene) {
+      // caveScene.setListenerFromMatrix(
+      // new THREE.Matrix4().multiplyMatrices(
+      //   new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+      //   this.el.sceneEl.camera.el.object3D.matrixWorld
+      // )
       caveScene.setListenerFromMatrix(
-      new THREE.Matrix4().multiplyMatrices(
-        new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
-        this.el.sceneEl.camera.el.object3D.matrixWorld
+        new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          this.el.sceneEl.camera.el.object3D.matrixWorld
+        )
       )
-    )
+    // )
       // caveScene.setListenerFromMatrix(this.cameraMatrix4);
     }
   }
@@ -70,22 +82,32 @@ AFRAME.registerComponent("sound-source", {
     //needs to be relative to camera, so i need to get the cameras position and rotation to 
     if (defaultSource) {
       var cameraEl = this.el.sceneEl.camera.el;
-      var rotation = cameraEl.getAttribute('rotation');
-      defaultSource.setPosition(
-        rotation.x,
-        rotation.y,
-        rotation.z,
-      )
+      // var rotation = cameraEl.getAttribute('rotation');
+      // defaultSource.setOrientation(
+      //   rotation.x,
+      //   rotation.y,
+      //   rotation.z,
+      //   rotation.x,
+      //   rotation.y,
+      //   rotation.z,
+      // )
       // console.log('camera? ', this.el.sceneEl.camera.el.object3D.matrixWorld)
       // defaultSource.setPosition(new THREE.Matrix4().multiplyMatrices(
       //   new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
       //   this.el.sceneEl.camera.el.object3D.matrixWorld
+      defaultSource.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          cameraEl.object3D.matrixWorld)
+      ));
+      // camera.matrixWorldInverse.getInverse( camera.matrixWorld );
+
+// vec.applyMatrix4( camera.matrixWorldInverse );
       // ))
-      defaultSource.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x - cameraPosition.x,
-        this.el.object3D.getWorldPosition(this.wpVector).y - cameraPosition.y,
-        this.el.object3D.getWorldPosition(this.wpVector).z - cameraPosition.z
-      );
+      // defaultSource.setPosition(
+      //   this.el.object3D.getWorldPosition(this.wpVector).x - cameraPosition.x,
+      //   this.el.object3D.getWorldPosition(this.wpVector).y - cameraPosition.y,
+      //   this.el.object3D.getWorldPosition(this.wpVector).z - cameraPosition.z
+      // );
     }
   }
 });
@@ -177,10 +199,8 @@ AFRAME.registerComponent("go-back", {
          let sky = sceneEl.querySelector("#sky");
          let environment = sceneEl.querySelector("#environment");
          sky.setAttribute('visible', 'true');
-         environment.setAttribute('environment','active: false');       
-         //hiding the wireframe setup
-        //  let wireframe = sceneEl.querySelector('#wire-frame');
-        //  wireframe.setAttribute('visible', 'false');
+         environment.setAttribute('environment','active: false');     
+         
         if (defaultAudioContext || defaultScene) {
           defaultSoundSource.disconnect(defaultSource.input);
           defaultAudioContext = null;

@@ -83,12 +83,12 @@ AFRAME.registerComponent("storm-sound-source", {
   },
 
   tick: function() {
+    var cameraEl = this.el.sceneEl.camera.el;
     if (lateSource1) {
-      lateSource1.setPosition(
-        this.el.object3D.getWorldPosition(this.wpVector).x,
-        this.el.object3D.getWorldPosition(this.wpVector).y,
-        this.el.object3D.getWorldPosition(this.wpVector).z
-      );
+      lateSource1.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          cameraEl.object3D.matrixWorld)
+          ));
     }
   }
 });
@@ -101,12 +101,12 @@ AFRAME.registerComponent("mermaid-cave-sound-source", {
     },
   
     tick: function() {
+      var cameraEl = this.el.sceneEl.camera.el;
       if (caveSource) {
-        caveSource.setPosition(
-          this.el.object3D.getWorldPosition(this.wpVector).x,
-          this.el.object3D.getWorldPosition(this.wpVector).y,
-          this.el.object3D.getWorldPosition(this.wpVector).z
-        );
+        caveSource.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
+            new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+            cameraEl.object3D.matrixWorld)
+            ));
       }
     }
   });
