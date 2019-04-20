@@ -6,52 +6,41 @@ AFRAME.registerComponent("listener", {
     size: {type: 'int', default: 5}
   },
   init() {
-    // console.log('SCHEMA WORKED: ',this.data.color);
     this.cameraMatrix4 = new AFRAME.THREE.Matrix4();
-    // console.log('cameria matrix: ',this.cameraMatrix4);
   },
   tick: function() {
     this.cameraMatrix4 = this.el.object3D.matrixWorld;
-
-    
     if (defaultScene)  {
       defaultScene.setListenerFromMatrix(
         new THREE.Matrix4().multiplyMatrices(
           new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
           this.el.sceneEl.camera.el.object3D.matrixWorld
         )
-      )
-      // defaultScene.setListenerFromMatrix(this.cameraMatrix4);
+      );
     }
     if (customScene) {
-      // customScene.setListenerFromMatrix(this.cameraMatrix4);
       customScene.setListenerFromMatrix(
         new THREE.Matrix4().multiplyMatrices(
           new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
           this.el.sceneEl.camera.el.object3D.matrixWorld
         )
-      )
+      );
     }
-    // if (occlusionScene) {
-    //   occlusionScene.setListenerFromMatrix(this.cameraMatrix4);
-    // }
-    // if (mainScene) {
-    //   mainScene.setListenerFromMatrix(this.cameraMatrix4);
-    // }
+    if (occlusionScene) {
+      occlusionScene.setListenerFromMatrix(
+        new THREE.Matrix4().multiplyMatrices(
+          new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
+          this.el.sceneEl.camera.el.object3D.matrixWorld
+        )
+      );
+    }
     if (caveScene) {
-      // caveScene.setListenerFromMatrix(
-      // new THREE.Matrix4().multiplyMatrices(
-      //   new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
-      //   this.el.sceneEl.camera.el.object3D.matrixWorld
-      // )
       caveScene.setListenerFromMatrix(
         new THREE.Matrix4().multiplyMatrices(
           new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
           this.el.sceneEl.camera.el.object3D.matrixWorld
         )
-      )
-    // )
-      // caveScene.setListenerFromMatrix(this.cameraMatrix4);
+      );
     }
   }
 });
