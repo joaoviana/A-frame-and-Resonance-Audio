@@ -46,7 +46,6 @@ AFRAME.registerComponent("sound-file-selected", {
         "src",
         "./src/templates/customiseMenu/customiseMenu3.template"
       );
-      // console.log(customiseMenuObject);
     });
   }
 });
@@ -56,13 +55,8 @@ AFRAME.registerComponent("sound-file-selected", {
 AFRAME.registerComponent("register-selection", {
   init: function() {
     this.el.addEventListener("click", function(e) {
-      // console.log('HERE');
-      //   let sceneEl = document.querySelector("a-scene");
-      //   let mask = sceneEl.querySelector("#mask");
       let wallMaterial = this.getAttribute("src").replace("#", "");
       let wall = this.classList[0];
-      // console.log(wall);
-
       //setting custom room materials
       if (wall == "floor-wall") {
         customiseMenuObject.roomProperties.floor = wallMaterial;
@@ -77,7 +71,6 @@ AFRAME.registerComponent("register-selection", {
       } else if (wall == "back-wall") {
         customiseMenuObject.roomProperties.back = wallMaterial;
       }
-      // console.log('REGISTERED SELECTION FOR ROOM PROP:', wall, " and ", wallMaterial, " and ", customiseMenuObject);
     });
   }
 });
@@ -92,7 +85,6 @@ AFRAME.registerComponent("set-props-button", {
         "src",
         "./src/templates/customiseMenu/customiseMenu4.template"
       );
-      // console.log(customiseMenuObject);
     });
   }
 });
@@ -150,17 +142,12 @@ AFRAME.registerComponent("set-extra-props-button", {
         "src",
         "./src/templates/customiseMenu/customiseMenu5.template"
       );
-
       //hiding a-sky and making environment visible
       let sky = sceneEl.querySelector("#sky");
       let environment = sceneEl.querySelector("#environment");
       sky.setAttribute('visible', 'false');
       environment.setAttribute('environment','active: true');
       handleCustomisedSelection(customiseMenuObject);
-
-      // //showing the wireframe setup
-      // let wireframe = sceneEl.querySelector('#wire-frame');
-      // wireframe.setAttribute('visible', 'true');
     });
   }
 });

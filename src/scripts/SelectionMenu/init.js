@@ -34,7 +34,6 @@ AFRAME.registerComponent("select-menu-box", {
           "src",
           "./src/templates/learnMenu/learnMenu1.template"
         );
-        //
       }
     });
   }

@@ -67,36 +67,12 @@ AFRAME.registerComponent("sound-source", {
   },
 
   tick: function() {
-    // console.log('get world position', this.el.object3D.getWorldPosition(this.wpVector).x + this.el.sceneEl.camera.el.object3D.matrixWorld.x)
-    //needs to be relative to camera, so i need to get the cameras position and rotation to 
     if (defaultSource) {
       var cameraEl = this.el.sceneEl.camera.el;
-      // var rotation = cameraEl.getAttribute('rotation');
-      // defaultSource.setOrientation(
-      //   rotation.x,
-      //   rotation.y,
-      //   rotation.z,
-      //   rotation.x,
-      //   rotation.y,
-      //   rotation.z,
-      // )
-      // console.log('camera? ', this.el.sceneEl.camera.el.object3D.matrixWorld)
-      // defaultSource.setPosition(new THREE.Matrix4().multiplyMatrices(
-      //   new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
-      //   this.el.sceneEl.camera.el.object3D.matrixWorld
       defaultSource.setFromMatrix(new THREE.Matrix4().getInverse(new THREE.Matrix4().multiplyMatrices(
           new THREE.Matrix4().getInverse(this.el.object3D.matrixWorld),
           cameraEl.object3D.matrixWorld)
       ));
-      // camera.matrixWorldInverse.getInverse( camera.matrixWorld );
-
-// vec.applyMatrix4( camera.matrixWorldInverse );
-      // ))
-      // defaultSource.setPosition(
-      //   this.el.object3D.getWorldPosition(this.wpVector).x - cameraPosition.x,
-      //   this.el.object3D.getWorldPosition(this.wpVector).y - cameraPosition.y,
-      //   this.el.object3D.getWorldPosition(this.wpVector).z - cameraPosition.z
-      // );
     }
   }
 });
@@ -131,8 +107,6 @@ AFRAME.registerComponent('camera-logger', {
       this.data.seconds += 1;
       cameraPosition = this.log();
     }
-    // cameraPosition = this.worldPos;
-    // console.log('VARIABLE', cameraPosition);
   },
 });
 

@@ -1,5 +1,3 @@
-//settting up two rooms: t
-
 //main one - sea storm and a cave with a mermaid inside it
 
 let mainAudioContext;
@@ -23,7 +21,7 @@ let stormSound;
 let stormSoundSource;
 
 function initCaveAudioContext() {
-     // Set room acoustics properties.
+  // Set room acoustics properties.
   let caveAudioDimensions = {
     width: 50,
     height: 20,

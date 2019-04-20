@@ -1,5 +1,3 @@
-//handle clicks here
-
 AFRAME.registerComponent("learn-menu-selection", {
     init: function() {
       this.el.addEventListener("click", function(evt) {
@@ -7,7 +5,6 @@ AFRAME.registerComponent("learn-menu-selection", {
         let mask = sceneEl.querySelector("#mask");
         //Get text value from menu selected from the learn menu
         let menuSelected = this.childNodes[1].components.text.attrValue.value;
-
          //hiding a-sky and making environment visible
          let sky = sceneEl.querySelector("#sky");
          let environment = sceneEl.querySelector("#environment");
@@ -15,11 +12,6 @@ AFRAME.registerComponent("learn-menu-selection", {
          let directionalLight = sceneEl.querySelector("#directional-light");
          sky.setAttribute('visible', 'false');
          environment.setAttribute('environment','active: true');
-         console.log('menu selected: ', menuSelected);
-
-        //  <a-entity id="ambient-light" light="type: ambient; color: #CCC"></a-entity>
-        // <a-entity id="directional-light" light="type: directional; color: #EEE; intensity: 0.5" position="-1 1 0"></a-entity>
-
 
         if (menuSelected == "Occlusion") {
             console.log('INSIDE OCCLUSION');
@@ -50,7 +42,6 @@ AFRAME.registerComponent("learn-menu-selection", {
           sceneEl.setAttribute('fog','type: exponential');
           sceneEl.setAttribute('fog','density: 0.15');
           sceneEl.setAttribute('fog','color: #111');
-          // initSceneAudioContext();
          
           mask.setAttribute(
             "template",
@@ -58,8 +49,6 @@ AFRAME.registerComponent("learn-menu-selection", {
             "./src/templates/learnMenu/learnMenu-lateReflections.template"
           );
           initCaveAudioContext();
-          //
-           //initialising the late reflections audio context
         }
       });
     }

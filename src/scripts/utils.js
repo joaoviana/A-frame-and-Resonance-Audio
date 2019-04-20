@@ -1,5 +1,4 @@
 //utilities for just random stuff that might be useful in many places
-
 const setAllRoomProperties = ((material) => {
     let roomPropertiesObj = {
         left: material,
@@ -35,19 +34,3 @@ const setAllRoomDimensions = ((dimension) => {
     };
     return roomDimensionsObj;
 });
-
-// AFRAME.registerComponent("set-extra-props-button", {
-//   init: function() {
-//     this.el.addEventListener("click", function(evt) {
-//       let sceneEl = document.querySelector("a-scene");
-//       let mask = sceneEl.querySelector("#mask");
-//       mask.setAttribute(
-//         "template",
-//         "src",
-//         "./src/templates/customiseMenu/customiseMenu5.template"
-//       );
-//       console.log(customiseMenuObject);
-//       handleCustomisedSelection(customiseMenuObject);
-//     });
-//   }
-// });

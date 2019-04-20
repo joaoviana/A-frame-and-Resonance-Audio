@@ -80,7 +80,6 @@ function initAudioCustomised(customPropsObj) {
 
   //instantiate audio context and RA
   customAudioContext = new (window.AudioContext || window.webkitAudioContext)();
-  // console.log('AUDIO CONTEXT IN CUSTOMISED SCENE', customAudioContext);
   // Create a (1st-order Ambisonic) ResonanceAudio scene.
   customScene = new ResonanceAudio(customAudioContext);
   // console.log('SCENE IN CUSTOMISED SCENE', scene);
